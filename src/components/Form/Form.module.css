@@ -1,0 +1,138 @@
+/* reset input type number appearance */
+
+input:focus,
+.dateHolder:focus-within,
+.terms > p:focus-within {
+  border: 0.2rem solid var(--color-lightblue--2);
+}
+input,
+.terms > p,
+.dateHolder {
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-paleblue--1);
+  background: var(--color-white-0);
+  height: 4.8rem;
+  outline: 0;
+  padding: 0 1.5rem;
+  color: var(--color-dark--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  font-family: inherit;
+  margin-bottom: 1rem;
+}
+
+.form {
+  position: absolute;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  left: 8rem;
+  top: 0;
+  background-color: var(--color-white-0);
+  padding: 6rem 4rem 4rem 6rem;
+  border-radius: 0 2rem 2rem 0;
+  height: 100vh;
+  overflow: scroll;
+  z-index: 1;
+  box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+}
+.form::-webkit-scrollbar {
+  display: none;
+}
+.title {
+  color: var(--color-dark--1);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  letter-spacing: -0.05rem;
+}
+.formH3 {
+  color: var(--color-lightblue--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.label label {
+  color: var(--color-softblue--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: -0.01rem;
+  padding: 1rem 0;
+}
+
+.address input {
+  width: 100%;
+}
+.billFromBtm {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+.billFromBtm > div {
+  width: 100%;
+}
+.billFromBtm input {
+  width: 100%;
+}
+
+.dateHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+}
+.dateHolder input {
+  border: unset;
+  background: transparent;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: unset;
+  margin-bottom: 0;
+  padding: 0;
+  width: 100%;
+}
+.terms {
+  position: relative;
+}
+.terms > p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.actionBtns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7rem;
+}
+.actionBtns button {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  height: 4.8rem;
+  width: 13rem;
+  border-radius: 2.4rem;
+}
+.endBtns {
+  display: flex;
+  gap: 2rem;
+}

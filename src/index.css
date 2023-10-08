@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap');
+:root {
+  --color-lightblue--1: #7c5dfa;
+  --color-lightblue--2: #9277ff;
+  --color-darkblue--1: #1e2139;
+  --color-darkblue--2: #252945;
+  --color-darkblue--3: #141625;
+  --color-paleblue--1: #dfe3fa;
+  --color-grey--1: #888eb0;
+  --color-softblue--1: #7e88c3;
+  --color-softblue--2: #858bb2;
+  --color-dark--1: #0c0e16;
+  --color-softred--1: #ec5757;
+  --color-softred--2: #ff9797;
+  --color-white: #f8f8fb;
+  --color-green: #33d69f;
+  --color-orange: #ff8f00;
+  --color-darkblue--4: #373b53;
+  --color-border: #494e6e;
+  --color-white-0: #fff;
+  --color-white-1: #f9fafe;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /*  10px */
+}
+body {
+  position: relative;
+  font-family: 'League Spartan', sans-serif;
+  background-color: var(--color-white);
+}
+/* body.dark{
+  background-color: var(--color-dark--1);
+} */
+
+ul li {
+  list-style: none;
+  text-decoration: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.form::-webkit-scrollbar {
+  display: none;
+}
+.react-datepicker {
+  width: 24rem;
+  height: 26rem;
+  border-radius: 0.8rem;
+  background: var(--color-white-0);
+  box-shadow: 0 1rem 2rem 0 rgba(72, 84, 159, 0.25);
+  border: none;
+  color: var(--08, #0c0e16);
+  text-align: center;
+  font-family: League Spartan;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 15px; /* 100% */
+  letter-spacing: -0.25px;
+  display: flex;
+  justify-content: center;
+}
+.react-datepicker__header {
+  background-color: var(--color-white-0);
+  border: 0;
+}
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+}
+.react-datepicker__current-month {
+  font-size: inherit;
+  font-weight: inherit;
+}
+.react-datepicker__navigation-icon {
+  margin-top: 2rem;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: var(--color-lightblue--1);
+  width: 0.8rem;
+}
+
+.react-datepicker__month-container {
+  float: unset;
+}
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-softblue--1);
+}
+.react-datepicker__day-name {
+  display: none;
+}
+.react-datepicker__month {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.react-datepicker__week {
+  gap: 1rem;
+  display: flex;
+}
+.react-datepicker__day--selected {
+  color: var(--color-lightblue--1);
+  background-color: unset;
+}
+.react-datepicker-popper[data-placement^='top'] .react-datepicker__triangle,
+.react-datepicker-popper[data-placement^='bottom']
+  .react-datepicker__triangle::after,
+.react-datepicker-popper[data-placement^='bottom'] .react-datepicker__triangle {
+  display: none;
+}
+.react-datepicker__day--outside-month {
+  color: var( --color-dark--1);
+  opacity: 0.3;
+}

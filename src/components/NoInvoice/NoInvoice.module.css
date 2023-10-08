@@ -1,0 +1,24 @@
+.noInvoice {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+}
+
+.err {
+  margin-top: 6rem;
+  color: var(--color-dark--1);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.075rem;
+}
+
+.create {
+  margin-top: 3rem;
+  color: var(--color-grey--1);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: -0.01rem;
+}

@@ -1,0 +1,61 @@
+.invoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin: 6rem auto;
+}
+.invoiceHeadWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+.invoiceHead h1 {
+  color: var(--color-dark--1);
+  font-size: 3.6rem;
+  font-weight: 700;
+  letter-spacing: -0.1rem;
+}
+
+.invoiceHead span {
+  color: var(--color-grey--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.01rem;
+  line-height: 1.5rem;
+}
+.rightHead {
+  gap: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.addInvoice {
+  background-color: var(--color-lightblue--1);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 1rem 0.9rem 0.9rem;
+  width: 16rem;
+  border-radius: 3.9rem;
+  gap: 1.5rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  transition: 500ms;
+}
+.addInvoice:hover {
+  background-color: var(--color-lightblue--2);
+}
+
+.addInvoice span {
+  color: var(--color-white-0);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+}

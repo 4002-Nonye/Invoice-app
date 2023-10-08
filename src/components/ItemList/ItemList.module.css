@@ -1,0 +1,51 @@
+.itemList {
+  display: flex;
+  flex-direction: column;
+  height: 14rem;
+  width: 100%;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.itemList::-webkit-scrollbar {
+  display: none;
+}
+
+.fields {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  justify-items: flex-start;
+  color: var(--color-softblue--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  letter-spacing: -0.01rem;
+  padding: 1rem 0;
+}
+
+.data {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.itemName {
+  width: 21rem;
+}
+.qty {
+  width: 4.9rem;
+}
+.price {
+  width: 10rem;
+}
+.total {
+  width: 5.6rem;
+  color: var(--color-grey--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+}
+.delete {
+  cursor: pointer;
+}

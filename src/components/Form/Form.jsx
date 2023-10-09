@@ -25,6 +25,7 @@ function Form({ children }) {
     clientCity,
     clientPostCode,
     clientCountry,
+    invoiceFormisOpen
   } = useInvoice();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ function Form({ children }) {
   };
 
   return (
-    <div className={styles.form}>
+    <div className={`${styles.form}  ${invoiceFormisOpen && styles.open}`}>
       <h2 className={styles.title}> {children}</h2>
       <form>
         <div className={styles.billFrom}>
@@ -46,7 +47,10 @@ function Form({ children }) {
               type="text"
               id="streetAddress"
               value={senderAddress}
-              onChange={(e) => handleInputChange(e.target.value, 'SENDER_ADDRESS/CHANGED')}
+              onChange={(e) => {
+                handleInputChange(e.target.value, 'SENDER_ADDRESS/CHANGED');
+                console.log(clientCity);
+              }}
             />
           </div>
           <div className={styles.billFromBtm}>
@@ -56,7 +60,9 @@ function Form({ children }) {
                 type="text"
                 id="city"
                 value={senderCity}
-                onChange={(e) => handleInputChange(e.target.value, 'SENDER_CITY/CHANGED')}
+                onChange={(e) =>
+                  handleInputChange(e.target.value, 'SENDER_CITY/CHANGED')
+                }
               />
             </div>
             <div className={`${styles.postCode} ${styles.label}`}>
@@ -76,7 +82,9 @@ function Form({ children }) {
                 type="text"
                 id="country"
                 value={senderCountry}
-                onChange={(e) => handleInputChange(e.target.value, 'SENDER_COUNTRY/CHANGED')}
+                onChange={(e) =>
+                  handleInputChange(e.target.value, 'SENDER_COUNTRY/CHANGED')
+                }
               />
             </div>
           </div>
@@ -90,7 +98,9 @@ function Form({ children }) {
               type="text"
               id="clientName"
               value={clientName}
-              onChange={(e) => handleInputChange(e.target.value, 'CLIENT_NAME/CHANGED')}
+              onChange={(e) =>
+                handleInputChange(e.target.value, 'CLIENT_NAME/CHANGED')
+              }
             />
           </div>
           <div className={`${styles.clientEmail} ${styles.label}`}>
@@ -100,7 +110,9 @@ function Form({ children }) {
               id="clientEmail"
               placeholder="e.g. email@example.com"
               value={clientEmail}
-              onChange={(e) => handleInputChange(e.target.value, 'CLIENT_EMAIL/CHANGED')}
+              onChange={(e) =>
+                handleInputChange(e.target.value, 'CLIENT_EMAIL/CHANGED')
+              }
             />
           </div>
           <div className={`${styles.clientAddress} ${styles.label}`}>
@@ -109,7 +121,9 @@ function Form({ children }) {
               type="text"
               id="clientAddress"
               value={clientAddress}
-              onChange={(e) => handleInputChange(e.target.value, 'CLIENT_ADDRESS/CHANGED')}
+              onChange={(e) =>
+                handleInputChange(e.target.value, 'CLIENT_ADDRESS/CHANGED')
+              }
             />
           </div>
           <div className={styles.billFromBtm}>
@@ -119,7 +133,9 @@ function Form({ children }) {
                 type="text"
                 id="clientCity"
                 value={clientCity}
-                onChange={(e) => handleInputChange(e.target.value, 'CLIENT_CITY/CHANGED')}
+                onChange={(e) =>
+                  handleInputChange(e.target.value, 'CLIENT_CITY/CHANGED')
+                }
               />
             </div>
             <div className={`${styles.postCode} ${styles.label}`}>
@@ -139,7 +155,9 @@ function Form({ children }) {
                 type="text"
                 id="clientCountry"
                 value={clientCountry}
-                onChange={(e) => handleInputChange(e.target.value, 'CLIENT_COUNTRY/CHANGED')}
+                onChange={(e) =>
+                  handleInputChange(e.target.value, 'CLIENT_COUNTRY/CHANGED')
+                }
               />
             </div>
           </div>

@@ -7,7 +7,7 @@ import Filter from '../Filter/Filter';
 import InvoiceCard from '../InvoiceCard/InvoiceCard';
 
 function Invoice() {
-  const { invoices } = useInvoice();
+  const { invoices, handleOpenForm,invoiceFormisOpen } = useInvoice();
   return (
     <div className={styles.invoice}>
       <div className={styles.invoiceHeadWrapper}>
@@ -24,7 +24,7 @@ function Invoice() {
 
         <div className={styles.rightHead}>
           <Filter />
-          <button type="button" className={styles.addInvoice}>
+          <button type="button" className={styles.addInvoice} onClick={handleOpenForm}>
             <img src={add} alt="add-icon" />
             <span>New Invoice</span>
           </button>

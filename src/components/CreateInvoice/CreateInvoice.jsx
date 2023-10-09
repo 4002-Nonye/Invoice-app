@@ -4,11 +4,11 @@ import styles from './CreateInvoice.module.css';
 
 function CreateInvoice() {
   return (
-   
+    <div>
       <Form>
-      New Invoice
+        <h2>New Invoice</h2>
       </Form>
-    
+    </div>
   );
 }
 

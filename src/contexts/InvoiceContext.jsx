@@ -11,24 +11,36 @@ const initialState = {
       amount: '4,032.33',
     },
   ],
+  sender: {
+    senderAddress: '',
+    senderCity: '',
+    senderPostCode: '',
+    senderCountry: '',
+  },
+  client: {
+    clientName: '',
+    clientEmail: '',
+    clientAddress: '',
+    clientCity: '',
+    clientPostCode: '',
+    clientCountry: '',
+  },
   paymentDay: 1,
-  senderAddress: '',
-  senderCity: '',
-  senderPostCode: '',
-  senderCountry: '',
-  clientName: '',
-  clientEmail: '',
-  clientAddress: '',
-  clientCity: '',
-  clientPostCode: '',
-  clientCountry: '',
+
   date: new Date(),
+  invoiceFormisOpen: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'PAYMENT_DAY/CHANGED':
-      return { ...state, paymentDay: action.payload };
+      return {
+        ...state,
+        sender: {
+          ...state.sender,
+          paymentDay: action.payload,
+        },
+      };
 
     case 'SENDER_ADDRESS/CHANGED':
       return { ...state, senderAddress: action.payload };
@@ -52,18 +64,25 @@ const reducer = (state, action) => {
       return { ...state, clientCountry: action.payload };
     case 'DATE/CHANGED':
       return { ...state, date: action.payload };
+    case 'NEW_INVOICE/OPEN':
+      return { ...state, invoiceFormisOpen: true };
 
     default:
       throw new Error('Unknown action type');
   }
 };
 const InvoiceProvider = ({ children }) => {
-  const [{ invoices,date }, dispatch] = useReducer(reducer, initialState);
-
+  const [{ invoices, date, client, sender, invoiceFormisOpen }, dispatch] =
+    useReducer(reducer, initialState);
 
   // function to handle input change
   const handleInputChange = (value, type) => {
     dispatch({ type: type, payload: value });
+  };
+
+  // function to open form to create a new invoice
+  const handleOpenForm = () => {
+    dispatch({ type: 'NEW_INVOICE/OPEN' });
   };
 
   return (
@@ -71,7 +90,11 @@ const InvoiceProvider = ({ children }) => {
       value={{
         invoices,
         handleInputChange,
-        date
+        date,
+        sender,
+        client,
+        invoiceFormisOpen,
+        handleOpenForm,
       }}
     >
       {children}

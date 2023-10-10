@@ -59,3 +59,15 @@
   line-height: 1.5rem;
   letter-spacing: -0.025rem;
 }
+.invoiceWrapper {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+
+ 
+  flex-direction:  column;
+}
+.invoiceWrapper li {
+
+  display: flex;
+}

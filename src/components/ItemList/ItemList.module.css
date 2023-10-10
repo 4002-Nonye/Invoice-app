@@ -7,7 +7,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.itemList::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -45,6 +45,9 @@
   font-weight: 700;
   line-height: 1.5rem;
   letter-spacing: -0.025rem;
+ white-space: nowrap;
+ overflow: auto;
+ scrollbar-width: 0;
 }
 .delete {
   cursor: pointer;

@@ -7,7 +7,7 @@ import Filter from '../Filter/Filter';
 import InvoiceCard from '../InvoiceCard/InvoiceCard';
 
 function Invoice() {
-  const { invoices, handleOpenForm,invoiceFormisOpen } = useInvoice();
+  const { invoices, handleOpenForm } = useInvoice();
   return (
     <div className={styles.invoice}>
       <div className={styles.invoiceHeadWrapper}>
@@ -34,11 +34,11 @@ function Invoice() {
       {!invoices.length && <NoInvoice />}
 
       {invoices && (
-        <ul>
+        <div className={styles.invoiceWrapper}>
           {invoices.map((invoice) => (
             <InvoiceCard key={invoice.id} invoice={invoice} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

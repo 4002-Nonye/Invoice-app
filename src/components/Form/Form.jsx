@@ -15,17 +15,11 @@ function Form({ children }) {
     date,
     handleInputChange,
     paymentDay,
-    senderAddress,
-    senderCity,
-    senderPostCode,
-    senderCountry,
-    clientName,
-    clientEmail,
-    clientAddress,
-    clientCity,
-    clientPostCode,
-    clientCountry,
-    invoiceFormisOpen
+    sender,
+    client,
+    description,
+    invoiceFormisOpen,
+    
   } = useInvoice();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,10 +40,9 @@ function Form({ children }) {
             <input
               type="text"
               id="streetAddress"
-              value={senderAddress}
+              value={sender.senderAddress}
               onChange={(e) => {
                 handleInputChange(e.target.value, 'SENDER_ADDRESS/CHANGED');
-                console.log(clientCity);
               }}
             />
           </div>
@@ -59,7 +52,7 @@ function Form({ children }) {
               <input
                 type="text"
                 id="city"
-                value={senderCity}
+                value={sender.senderCity}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'SENDER_CITY/CHANGED')
                 }
@@ -70,7 +63,7 @@ function Form({ children }) {
               <input
                 type="number"
                 id="postCode"
-                value={senderPostCode}
+                value={sender.senderPostCode}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'SENDER_POSTCODE/CHANGED')
                 }
@@ -81,7 +74,7 @@ function Form({ children }) {
               <input
                 type="text"
                 id="country"
-                value={senderCountry}
+                value={sender.senderCountry}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'SENDER_COUNTRY/CHANGED')
                 }
@@ -97,7 +90,7 @@ function Form({ children }) {
             <input
               type="text"
               id="clientName"
-              value={clientName}
+              value={client.clientName}
               onChange={(e) =>
                 handleInputChange(e.target.value, 'CLIENT_NAME/CHANGED')
               }
@@ -109,7 +102,7 @@ function Form({ children }) {
               type="text"
               id="clientEmail"
               placeholder="e.g. email@example.com"
-              value={clientEmail}
+              value={client.clientEmail}
               onChange={(e) =>
                 handleInputChange(e.target.value, 'CLIENT_EMAIL/CHANGED')
               }
@@ -120,7 +113,7 @@ function Form({ children }) {
             <input
               type="text"
               id="clientAddress"
-              value={clientAddress}
+              value={client.clientAddress}
               onChange={(e) =>
                 handleInputChange(e.target.value, 'CLIENT_ADDRESS/CHANGED')
               }
@@ -132,7 +125,7 @@ function Form({ children }) {
               <input
                 type="text"
                 id="clientCity"
-                value={clientCity}
+                value={client.clientCity}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'CLIENT_CITY/CHANGED')
                 }
@@ -143,7 +136,7 @@ function Form({ children }) {
               <input
                 type="number"
                 id="clientPostCode"
-                value={clientPostCode}
+                value={client.clientPostCode}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'CLIENT_POSTCODE/CHANGED')
                 }
@@ -154,7 +147,7 @@ function Form({ children }) {
               <input
                 type="text"
                 id="clientCountry"
-                value={clientCountry}
+                value={client.clientCountry}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'CLIENT_COUNTRY/CHANGED')
                 }
@@ -189,14 +182,21 @@ function Form({ children }) {
                 </span>
                 <img src={isOpen ? arrowUp : arrowDown} alt="arrow-icon" />
               </p>
-              {isOpen && <PaymentTerms setPaymentDay={setPaymentDay} />}
+              {isOpen && <PaymentTerms />}
             </div>
           </div>
         </div>
 
         <div className={`${styles.description} ${styles.label}`}>
           <label htmlFor="description">Project Description</label>
-          <input type="text" id="description" />
+          <input
+            type="text"
+            id="description"
+            value={description}
+            onChange={(e) =>
+              handleInputChange(e.target.value, 'DESCRIPTION/CHANGED')
+            }
+          />
         </div>
         <div>
           <h3>Item List</h3>

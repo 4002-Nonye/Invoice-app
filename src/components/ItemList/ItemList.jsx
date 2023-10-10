@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ItemList.module.css';
 import deleteIcon from '../../assets/delete.svg';
 import Button from '../Button/Button';
+import { useInvoice } from '../../contexts/InvoiceContext';
+import { v4 as uuidv4 } from 'uuid';
 function ItemList() {
-  const [row, setRow] = useState(1);
+  const { handleAddItem, itemList, handleItemValueChange, handleDeleteItem } =
+    useInvoice();
 
-  const handleAddItem = () => {
-    setRow((row) => row + 1);
+  // new object to be added to itemList arr
+  const newItem = {
+    id: uuidv4(),
+    name: '',
+    qty: '',
+    price: '',
+    total:0
   };
+
   return (
     <>
       <div className={styles.itemList}>
@@ -19,18 +28,44 @@ function ItemList() {
           <p></p>
         </div>
 
-        {Array.from({ length: row }, (_, i) => (
-          <div key={i} className={styles.data}>
+        {itemList.map((item) => (
+          <div key={item.id} className={styles.data}>
             {' '}
-            <input type="text" className={styles.itemName} />
-            <input type="number" className={styles.qty} />
-            <input type="number" className={styles.price} />
-            <p className={styles.total}>30</p>
-            <img src={deleteIcon} alt="delete" className={styles.delete} />
+            <input
+              type="text"
+              className={styles.itemName}
+              value={item.name}
+              onChange={(e) => handleItemValueChange(e, item.id, 'name')}
+            />
+            <input
+              type="number"
+              className={styles.qty}
+              value={item.qty}
+              onChange={(e) => handleItemValueChange(e, item.id, 'qty')}
+            />
+            <input
+              type="number"
+              className={styles.price}
+              value={item.price}
+              onChange={(e) => handleItemValueChange(e, item.id, 'price')}
+            />
+            <p className={styles.total}>
+              {item.total}
+            </p>
+            <img
+              src={deleteIcon}
+              alt="delete"
+              className={styles.delete}
+              onClick={() => handleDeleteItem(item.id)}
+            />
           </div>
         ))}
       </div>
-      <Button type="button" variant="add" onClick={handleAddItem}>
+      <Button
+        type="button"
+        variant="add"
+        onClick={() => handleAddItem(newItem)}
+      >
         {' '}
         + Add New Item
       </Button>

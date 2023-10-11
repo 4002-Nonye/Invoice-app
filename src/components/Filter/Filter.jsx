@@ -4,6 +4,7 @@ import styles from './Filter.module.css';
 import arrowDown from '../../assets/arrow-down.svg';
 import arrowUp from '../../assets/arrow-up.svg';
 import CheckBox from '../CheckBox/CheckBox';
+import useId from '../../hooks/useId';
 
 // options for filter box
 const filterOptions = [
@@ -23,13 +24,7 @@ const filterOptions = [
 
 function Filter() {
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState('');
-  const [curChecked, setCurChecked] = useState(null);
 
-  // handle radio check
-  const handleRadioChange = (e) => {
-    setStatus(e.target.value);
-  };
 
   // function to display/hide filter box
   const handleShowFilter = () => {
@@ -53,12 +48,7 @@ function Filter() {
             key={index}
             id={option.statusText}
             type={option.type}
-            onRadioChange={handleRadioChange}
-            index={index}
-            curChecked={curChecked}
-            setCurChecked={setCurChecked}
-            setStatus={setStatus}
-          />
+                    />
         ))}
       </div>
     </div>

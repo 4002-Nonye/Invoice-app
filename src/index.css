@@ -19,6 +19,7 @@
   --color-border: #494e6e;
   --color-white-0: #fff;
   --color-white-1: #f9fafe;
+  --color-grey--2:#777F98;
 }
 
 * {
@@ -37,7 +38,9 @@ body {
 /* body.dark{
   background-color: var(--color-dark--1);
 } */
-
+a{
+  text-decoration: none;
+}
 ul li {
   list-style: none;
   text-decoration: none;

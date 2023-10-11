@@ -5,9 +5,19 @@ import NoInvoice from '../NoInvoice/NoInvoice';
 import { useInvoice } from '../../contexts/InvoiceContext';
 import Filter from '../Filter/Filter';
 import InvoiceCard from '../InvoiceCard/InvoiceCard';
+import { Link } from 'react-router-dom';
+import { useForm } from '../../contexts/FormContext';
 
 function Invoice() {
-  const { invoices, handleOpenForm } = useInvoice();
+  const { invoices, status } = useInvoice();
+  const { handleOpenForm } = useForm();
+
+  // filter invoices according to invoice status
+  const FilteredInvoices = invoices.filter((invoice) => {
+    if (!status) return invoice;
+    return invoice.status === status;
+  });
+
   return (
     <div className={styles.invoice}>
       <div className={styles.invoiceHeadWrapper}>
@@ -15,16 +25,20 @@ function Invoice() {
           <h1>Invoices</h1>
           <span>
             {invoices.length > 0
-              ? `There are ${invoices.length} total ${
-                  invoices.length > 1 ? 'invoices' : 'invoice'
-                }`
+              ? `There  ${FilteredInvoices.length > 1 ? 'are' : 'is'} ${
+                  FilteredInvoices.length
+                } total ${FilteredInvoices.length > 1 ? 'invoices' : 'invoice'}`
               : 'No invoices'}
           </span>
         </div>
 
         <div className={styles.rightHead}>
           <Filter />
-          <button type="button" className={styles.addInvoice} onClick={handleOpenForm}>
+          <button
+            type="button"
+            className={styles.addInvoice}
+            onClick={handleOpenForm}
+          >
             <img src={add} alt="add-icon" />
             <span>New Invoice</span>
           </button>
@@ -35,8 +49,10 @@ function Invoice() {
 
       {invoices && (
         <div className={styles.invoiceWrapper}>
-          {invoices.map((invoice) => (
-            <InvoiceCard key={invoice.id} invoice={invoice} />
+          {FilteredInvoices.map((invoice) => (
+            <Link to={`/invoice/${invoice.id}`} key={invoice.id}>
+              <InvoiceCard invoice={invoice} />
+            </Link>
           ))}
         </div>
       )}

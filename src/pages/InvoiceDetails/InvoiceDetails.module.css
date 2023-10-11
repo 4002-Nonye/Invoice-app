@@ -1,0 +1,9 @@
+.invoiceDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  position: relative;
+  z-index: 100;
+  margin: 6rem auto;
+}

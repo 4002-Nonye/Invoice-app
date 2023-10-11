@@ -1,7 +1,7 @@
 .itemList {
   display: flex;
   flex-direction: column;
-  height: 14rem;
+max-height: 12rem;
   width: 100%;
   overflow: scroll;
   -ms-overflow-style: none;

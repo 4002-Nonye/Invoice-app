@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './ItemList.module.css';
 import deleteIcon from '../../assets/delete.svg';
 import Button from '../Button/Button';
-import { useInvoice } from '../../contexts/InvoiceContext';
 import { v4 as uuidv4 } from 'uuid';
+import { useForm } from '../../contexts/FormContext';
 function ItemList() {
   const { handleAddItem, itemList, handleItemValueChange, handleDeleteItem } =
-    useInvoice();
+    useForm();
 
   // new object to be added to itemList arr
   const newItem = {
@@ -14,7 +14,7 @@ function ItemList() {
     name: '',
     qty: '',
     price: '',
-    total:0
+    total: 0,
   };
 
   return (
@@ -49,9 +49,7 @@ function ItemList() {
               value={item.price}
               onChange={(e) => handleItemValueChange(e, item.id, 'price')}
             />
-            <p className={styles.total}>
-              {item.total}
-            </p>
+            <p className={styles.total}>{item.total}</p>
             <img
               src={deleteIcon}
               alt="delete"

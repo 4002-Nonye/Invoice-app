@@ -1,28 +1,26 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styles from './CheckBox.module.css';
+import { useInvoice } from '../../contexts/InvoiceContext';
 
-function CheckBox({
-  id,
-  type,
-  onRadioChange,
-  index,
-  setCurChecked,
-  curChecked,
-  setStatus,
-}) {
+function CheckBox({ id, type }) {
+  // handle radio check
+  const { handleInputChange: handleRadioChange, status } = useInvoice();
+
+  // PERSIST CHECK STATE
+  // Define an array of allowed status values
+  const allowedStatusValues = ['pending', 'draft', 'paid'];
+
+  // Check if the current status is one of the allowed values
+  const isChecked = allowedStatusValues.includes(status) && status === id;
 
   // uncheck box if it is clicked twice
-  const isChecked = curChecked === index;
   const handleChecked = () => {
-   
     if (isChecked) {
-      setCurChecked(false);
-      setStatus('');
-    } else {
-      setCurChecked(index);
+      handleRadioChange('', 'STATUS/CHANGED');
     }
   };
+
   // change text to camelcase
   const firstLetter = id.split('')[0];
   const rest = id.slice(1, id.length);
@@ -36,7 +34,7 @@ function CheckBox({
         id={id}
         type={type}
         name={type}
-        onChange={onRadioChange}
+        onChange={(e) => handleRadioChange(e.target.value, 'STATUS/CHANGED')}
         value={id}
         checked={isChecked}
       />

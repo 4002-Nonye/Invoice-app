@@ -8,8 +8,9 @@ function InvoiceCard({ invoice }) {
     <>
       <div className={styles.invoiceItem}>
         <div className={styles.left}>
-          <p className={styles.id}>
-            <span className={styles.hash}> #</span>{invoice.id}
+          <p className={`id`}>
+            <span className={`hash`}> #</span>
+            {invoice.id}
           </p>
           <p className={styles.dueDate}>
             Due <span className={styles.date}>{invoice.dueDate}</span>
@@ -23,13 +24,13 @@ function InvoiceCard({ invoice }) {
             <span
               className={`${
                 invoice.status === 'pending'
-                  ? styles.pending
+                  ? 'pending'
                   : invoice.status === 'draft'
-                  ? styles.draft
+                  ? 'draft'
                   : invoice.status === 'paid'
-                  ? styles.paid
+                  ? 'paid'
                   : ''
-              } ${styles.defaultStatus}`}
+              } ${'defaultStatus'}`}
             >
               {invoice.status}
             </span>

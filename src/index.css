@@ -56,6 +56,71 @@ input[type='number'] {
 .form::-webkit-scrollbar {
   display: none;
 }
+.id {
+  color: var(--color-dark--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  font-weight: 700;
+}
+.hash {
+  color: var(--color-softblue--1);
+}
+
+/* BTNS */
+.defaultStatus {
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+  border-radius: 0.6rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  padding: 0 2rem;
+  width: 11rem;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+
+.draft::before,
+.paid::before,
+.pending::before {
+  content: ' ';
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  margin-top: -.2rem;
+
+}
+.pending::before {
+  background-color: var(--color-orange);
+}
+.draft::before {
+  background-color: var(--color-darkblue--4);
+}
+.paid::before {
+  background-color: var(--color-green);
+}
+.arrow {
+  cursor: pointer;
+}
+.pending {
+  color: var(--color-orange);
+  background-color: rgba(255, 145, 0, 0.07);
+}
+.draft {
+  color: var(--color-darkblue--4);
+  background-color: rgba(55, 59, 83, 0.07);
+}
+.paid {
+  color: var(--color-green);
+  background-color: rgb(51, 214, 159, 0.07);
+}
+
 .react-datepicker {
   width: 24rem;
   height: 26rem;

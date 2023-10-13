@@ -23,8 +23,26 @@ const invoice = {
   clientCountry: 'United Kingdom',
   clientEmail: 'alexgrim@mail.com',
   itemList: [
-    { id: uuidv4(), name: 'Banner Design', qty: 1, price: 156.0, total: 156.0 },
     {
+      id: uuidv4(),
+      name: 'Banner Design',
+      qty: 1,
+      price: 13356.0,
+      total: 156905.0,
+    },
+    {
+      id: uuidv4(),
+      name: 'Banner Designbshsu 8 eeuhd ujs',
+      qty: 1,
+      price: 156.0,
+      total: 156.0,
+    }, {
+      id: uuidv4(),
+      name: 'Banner Designbshsu 8 eeuhd ujs',
+      qty: 1,
+      price: 156.0,
+      total: 156.0,
+    }, {
       id: uuidv4(),
       name: 'Banner Designbshsu 8 eeuhd ujs',
       qty: 1,
@@ -127,24 +145,44 @@ function InvoiceDetail() {
           </div>
 
           <table className={styles.itemWrapper}>
-            <thead className={styles.fields}>
-              <tr className={`${styles.headText}`}>Item Name</tr>
-              <tr className={`${styles.headText}`}>QTY.</tr>
-              <tr className={`${styles.headText}`}>Price</tr>
-              <tr className={`${styles.headText}`}>Total</tr>
+            <thead>
+              <tr  className={styles.fields}>
+                <th className={styles.textLeft}>Item Name</th>
+                <th className={styles.textCenter}>QTY.</th>
+                <th className={styles.textRight}>Price</th>
+                <th className={styles.textRight}>Total</th>
+              </tr>
             </thead>
 
             <tbody>
               {invoice.itemList.map((item) => (
                 <tr key={item.id} className={styles.fieldValues}>
-                  <td>{item.name}</td>
-                  <td>{item.qty}</td>
-                  <td>{item.price.toFixed(2)}</td>
-                  <td>{item.total.toFixed(2)}</td>
+                  <td className={`${styles.textLeft} ${styles.name}`}>
+                    {item.name}
+                  </td>
+                  <td className={`${styles.textCenter} ${styles.qty}`}>
+                    {item.qty}
+                  </td>
+                  <td className={`${styles.textRight} ${styles.price}`}>
+                    £{' '}
+                    {item.price.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                    })}
+                  </td>
+                  <td className={`${styles.textRight} ${styles.total}`}>
+                    £{' '}
+                    {item.total.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                    })}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <div className={styles.amountDue}>
+            <p>Amount Due</p>
+            <p>£ 556.00</p>
+          </div>
         </div>
       </div>
     </div>

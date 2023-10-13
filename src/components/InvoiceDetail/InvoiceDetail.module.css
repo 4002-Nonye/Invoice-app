@@ -46,7 +46,7 @@
   box-shadow: 0 10rem 10rem -10rem rgba(72, 84, 159, 0.1);
   padding: 5rem;
   margin-top: 4rem;
-  height: 63rem;
+  height: 100%;
 }
 
 .topInfo {
@@ -91,15 +91,76 @@
   padding: 1rem 0;
 }
 
-.dateNameEmail {
-  color: var(--08, #0c0e16);
-  font-family: League Spartan;
-  font-size: 15px;
-  font-style: normal;
+.dateNameEmail,
+.name,
+.total {
+  color: var(--color-dark--1);
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 20px; /* 133.333% */
-  letter-spacing: -0.25px;
+  line-height: 2rem;
+  letter-spacing: -0.025rem;
 }
 .name {
   margin-bottom: 1rem;
+}
+.itemWrapper {
+  padding: 1rem 3rem 4rem 3rem;
+  margin-top: 8rem;
+  min-height: 18.4rem;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-white-1);
+  border-radius: 0.8rem 0.8rem 0 0;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+.fields th {
+  padding: 2rem 0;
+}
+.textCenter {
+  text-align: center;
+}
+.textLeft {
+  text-align: left;
+}
+.textRight {
+  text-align: right;
+}
+.total {
+  font-size: 1.7rem;
+}
+.fields {
+  color: var(--color-softblue--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  letter-spacing: -0.01rem;
+}
+.fieldValues td {
+  padding-bottom: 3rem;
+}
+.qty,
+.price {
+  color: var(--color-softblue--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+}
+.amountDue {
+  border-radius: 0px 0px 8px 8px;
+  background: var(--color-darkblue--4);
+  padding: 4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-white-0);
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem;
+  letter-spacing: -0.05rem;
+}
+
+.amountDue p:nth-child(2){
+    font-size: 2.4rem;
 }

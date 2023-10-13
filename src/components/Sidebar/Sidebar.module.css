@@ -10,7 +10,7 @@
   top: 0;
   bottom: 0;
   flex: 1;
-  z-index:100;
+  z-index: 100;
 }
 .btmImages {
   display: flex;
@@ -26,4 +26,29 @@
   padding: 3rem;
   border-top: 1px solid var(--color-border);
   cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    bottom: unset;
+    flex-direction: row;
+    right: 0;
+    height: 8rem;
+    border-radius: 0;
+  }
+  .btmImages {
+    flex-direction: row;
+  }
+
+  .logo {
+    height: 8rem;
+  }
+  .logo img {
+    height: 100%;
+  }
+  .avatar {
+    border-top: 0;
+    padding: 2rem;
+    border-left: 1px solid var(--color-border);
+  }
 }

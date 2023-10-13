@@ -84,3 +84,11 @@
 .paid:hover{
   background:var( --color-lightblue--2) ;
 }
+
+
+@media screen and (max-width: 500px) {
+  .edit,.paid,.delete{
+ /* width: 100%; */
+  }
+   
+ }

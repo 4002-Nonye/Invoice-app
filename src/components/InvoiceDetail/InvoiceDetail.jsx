@@ -11,7 +11,7 @@ const invoice = {
   senderCountry: 'United Kingdom',
   dueDate: '20 Sep 2021',
   name: 'Alysa Werner',
-  status: 'draft',
+  status: 'pending',
   amount: '4,032.33',
   description: 'Graphic Design',
   invoiceDate: '21 Aug 2021',
@@ -36,13 +36,15 @@ const invoice = {
       qty: 1,
       price: 156.0,
       total: 156.0,
-    }, {
+    },
+    {
       id: uuidv4(),
       name: 'Banner Designbshsu 8 eeuhd ujs',
       qty: 1,
       price: 156.0,
       total: 156.0,
-    }, {
+    },
+    {
       id: uuidv4(),
       name: 'Banner Designbshsu 8 eeuhd ujs',
       qty: 1,
@@ -112,32 +114,33 @@ function InvoiceDetail() {
           </div>
 
           <div className={styles.midInfo}>
-            <div className={styles.column}>
+            <div className={styles.flex}>
+              <div className={styles.column}>
+                <div className={styles.dateWrapper}>
+                  <p className={`${styles.headText}`}>Invoice Date</p>
+                  <p className={styles.dateNameEmail}>{invoice.dueDate}</p>
+                </div>
+                <div className={styles.paymentDue}>
+                  <p className={`${styles.headText}`}>Payment Due</p>
+                  <p className={styles.dateNameEmail}>20 Sep 2021 </p>
+                </div>
+              </div>
+
               <div className={styles.dateWrapper}>
-                <p className={`${styles.headText}`}>Invoice Date</p>
-                <p className={styles.dateNameEmail}>{invoice.dueDate}</p>
-              </div>
-              <div className={styles.paymentDue}>
-                <p className={`${styles.headText}`}>Payment Due</p>
-                <p className={styles.dateNameEmail}>20 Sep 2021 </p>
-              </div>
-            </div>
-
-            <div className={styles.dateWrapper}>
-              <p className={`${styles.headText}`}>Bill To</p>
-              <p className={`${styles.dateNameEmail} ${styles.name}`}>
-                {invoice.name}
-              </p>
-              <div
-                className={`${styles.address} ${styles.clientAddress} ${styles.text}`}
-              >
-                <span>{invoice.clientAddress}</span>
-                <span>{invoice.clientCity}</span>
-                <span>{invoice.clientPostCode}</span>
-                <span>{invoice.clientCountry}</span>
+                <p className={`${styles.headText}`}>Bill To</p>
+                <p className={`${styles.dateNameEmail} ${styles.name}`}>
+                  {invoice.name}
+                </p>
+                <div
+                  className={`${styles.address} ${styles.clientAddress} ${styles.text}`}
+                >
+                  <span>{invoice.clientAddress}</span>
+                  <span>{invoice.clientCity}</span>
+                  <span>{invoice.clientPostCode}</span>
+                  <span>{invoice.clientCountry}</span>
+                </div>
               </div>
             </div>
-
             <div>
               <p className={`${styles.headText}`}>Sent to</p>
               <p className={styles.dateNameEmail}>{invoice.clientEmail}</p>
@@ -146,7 +149,7 @@ function InvoiceDetail() {
 
           <table className={styles.itemWrapper}>
             <thead>
-              <tr  className={styles.fields}>
+              <tr className={styles.fields}>
                 <th className={styles.textLeft}>Item Name</th>
                 <th className={styles.textCenter}>QTY.</th>
                 <th className={styles.textRight}>Price</th>

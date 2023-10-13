@@ -7,7 +7,7 @@ import moon from '../../assets/moon.svg';
 function Sidebar() {
   return (
     <div className={styles.sidebar}>
-      <div>
+      <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
       <div className={styles.btmImages}>

@@ -117,7 +117,10 @@
   border-radius: 0.8rem 0.8rem 0 0;
   border-spacing: 0;
   border-collapse: separate;
-  background-color: pink;
+
+}
+.mobileData{
+  display: none;
 }
 .fields th {
   padding: 2rem 0;
@@ -134,7 +137,7 @@
 .total {
   font-size: 1.7rem;
 }
-.fields {
+.fields,.mobileData{
   color: var(--color-softblue--1);
   font-size: 1.3rem;
   font-weight: 500;
@@ -186,20 +189,24 @@
 @media screen and (max-width: 500px) {
   .invoiceDetail{
     margin-bottom: 4rem;
+    margin-top: 5rem;
+  }
+  .invoiceInfoWrapper{
+    padding: 2rem;
   }
   .midInfo {
     flex-direction: column;
     gap: 4rem;
   }
   .cta {
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     gap: 3.5rem;
     height: 9rem;
     align-items: center;
     padding: 0 3rem;
-    bottom: 0;
+    bottom: -10rem;
     left: 0;
     right: 0;
     background:var(--color-white-0);
@@ -221,6 +228,15 @@
   }
   thead{
     display: none;
+  }
+  .qty,.price{
+    display: none;
+  }
+  .mobileData{
+    display: block;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
  
 }

@@ -40,7 +40,7 @@ function Invoice() {
             onClick={handleOpenForm}
           >
             <img src={add} alt="add-icon" />
-            <span>New Invoice</span>
+            <span>New <span className={styles.mobileInvoice}>Invoice</span></span>
           </button>
         </div>
       </div>

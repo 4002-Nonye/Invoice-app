@@ -37,7 +37,7 @@ input,
   height: 100%;
   overflow: scroll;
   z-index: 10;
-  box-shadow: 0px 10px 20px 0px rgba(72, 84, 159, 0.25);
+  box-shadow: 0 1rem 2rem 0 rgba(72, 84, 159, 0.25);
   -ms-overflow-style: none;
   scrollbar-width: none;
   opacity: 0;
@@ -71,7 +71,7 @@ input,
   flex-direction: column;
   gap: 0.8rem;
 }
-.label label {
+.label label,.PaymentTerms {
   color: var(--color-softblue--1);
   font-size: 1.3rem;
   font-weight: 500;
@@ -85,17 +85,20 @@ input,
 }
 .billFromBtm {
   display: flex;
+
   gap: 3rem;
   width: 100%;
   margin-top: 2rem;
 }
-.billFromBtm > div {
-  width: 100%;
-}
+
 .billFromBtm input {
   width: 100%;
 }
-
+.cityPostCode {
+  display: flex;
+  gap: 3rem;
+  
+}
 .dateHolder {
   display: flex;
   align-items: center;
@@ -116,6 +119,9 @@ input,
 }
 .terms {
   position: relative;
+}
+.termsDate div{
+  width: 100%;
 }
 .terms > p {
   display: flex;
@@ -170,4 +176,40 @@ input,
   z-index: 1;
   backdrop-filter: blur(2px);
   transform: translateX(0);
+}
+
+@media screen and (max-width: 1024px) {
+  .form {
+    width: 61.6rem;
+    padding: 5rem 3rem 4rem;
+    top: 8rem;
+  }
+  .open {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form {
+    width: 100%;
+    border-radius: 0;
+    padding: 13rem 2rem 4rem;
+    top: 0;
+  }
+  .fromRow{
+    flex-direction: column;
+  }
+  .termsDate {
+    flex-direction: column;
+  }
+  .dateHolder {
+    height: 4.8rem;
+    justify-content: space-between;
+  }
+  .postCode {
+    width: 100%;
+  }
+  .actionBtns button {
+    width: 10rem;
+  }
 }

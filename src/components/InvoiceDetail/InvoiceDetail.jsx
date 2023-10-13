@@ -11,7 +11,7 @@ const invoice = {
   senderCountry: 'United Kingdom',
   dueDate: '20 Sep 2021',
   name: 'Alysa Werner',
-  status: 'pending',
+  status: 'draft',
   amount: '4,032.33',
   description: 'Graphic Design',
   invoiceDate: '21 Aug 2021',
@@ -32,21 +32,21 @@ const invoice = {
     },
     {
       id: uuidv4(),
-      name: 'Banner Designbshsu 8 eeuhd ujs',
+      name: 'Banner Design',
       qty: 1,
       price: 156.0,
       total: 156.0,
     },
     {
       id: uuidv4(),
-      name: 'Banner Designbshsu 8 eeuhd ujs',
+      name: 'Banner Design',
       qty: 1,
       price: 156.0,
       total: 156.0,
     },
     {
       id: uuidv4(),
-      name: 'Banner Designbshsu 8 eeuhd ujs',
+      name: 'Banner Design',
       qty: 1,
       price: 156.0,
       total: 156.0,
@@ -162,6 +162,12 @@ function InvoiceDetail() {
                 <tr key={item.id} className={styles.fieldValues}>
                   <td className={`${styles.textLeft} ${styles.name}`}>
                     {item.name}
+                    <span className={styles.mobileData} >
+                      {item.qty} x £{' '}
+                      {item.price.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                      })}
+                    </span>
                   </td>
                   <td className={`${styles.textCenter} ${styles.qty}`}>
                     {item.qty}

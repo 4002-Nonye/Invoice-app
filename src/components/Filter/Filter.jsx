@@ -25,7 +25,6 @@ const filterOptions = [
 function Filter() {
   const [isOpen, setIsOpen] = useState(false);
 
-
   // function to display/hide filter box
   const handleShowFilter = () => {
     setIsOpen((open) => !open);
@@ -38,17 +37,16 @@ function Filter() {
         onClick={handleShowFilter}
         aria-hidden="true"
       >
-        Filter by status
+        <span>
+          {' '}
+          Filter <span className={styles.mobileFilter}>by status</span>
+        </span>
         <img src={isOpen ? arrowUp : arrowDown} alt="arrow-icon" />
       </div>
 
       <div className={`${styles.filterOpt} ${isOpen && styles.open}`}>
         {filterOptions.map((option, index) => (
-          <CheckBox
-            key={index}
-            id={option.statusText}
-            type={option.type}
-                    />
+          <CheckBox key={index} id={option.statusText} type={option.type} />
         ))}
       </div>
     </div>

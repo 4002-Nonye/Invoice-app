@@ -24,7 +24,7 @@
   padding: 2rem;
   border-radius: 0.8rem;
   top: 4rem;
-  height:13rem;
+  height: 13rem;
   opacity: 0;
   z-index: -1;
   width: 19rem;
@@ -35,4 +35,18 @@
   top: 6rem;
   opacity: 1;
   z-index: 100;
+}
+@media screen and (max-width: 1024px) {
+  .open {
+    top: 16rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  
+  .mobileFilter {
+    display: none;
+  }
+  .filter {
+    gap: 1rem;
+  }
 }

@@ -6,8 +6,7 @@
   border-radius: 0.8rem;
   background: var(--color-white-0);
   box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
-  
-  height: 8.2rem;
+    height: 8.2rem;
 }
 .invoiceItem:hover {
   border: 1px solid var(--color-lightblue--1);
@@ -51,4 +50,41 @@
   gap: 3rem;
  
 }
+.mobileName,.mobileAmount{
+  display: none;
+}
+@media screen and (max-width: 768px) {
+.left{
+  gap: 4rem;
+}
+}
+@media screen and (max-width: 500px) {
+  .invoiceItem{
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  .left,.right{
+    display: flex;
+    flex-direction: column;
+ 
+  }
+  .left{
+    align-items: flex-start;
 
+  }
+  .right{
+    align-items: flex-end;
+  }
+  .arrow,.desktopAmount,.desktopName{
+    display: none;
+  }
+  .mobileName{
+    display: block;
+  }
+  .mobileAmount{
+    display: block;
+  }
+  
+}

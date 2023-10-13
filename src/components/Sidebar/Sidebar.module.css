@@ -52,3 +52,13 @@
     border-left: 1px solid var(--color-border);
   }
 }
+
+@media screen and (max-width: 500px) {
+.sidebar,.logo{
+  height: 7rem;
+}
+.avatar{
+  padding: 1.5rem 2.6rem;
+ width: 9rem;
+}
+}

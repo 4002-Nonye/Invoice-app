@@ -48,34 +48,46 @@ function Form({ children }) {
                 }}
               />
             </div>
-            <div className={styles.billFromBtm}>
-              <div className={`${styles.city} ${styles.label}`}>
-                <label htmlFor="city">City</label>
-                <input
-                  type="text"
-                  id="city"
-                  value={sender.senderCity}
-                  onChange={(e) =>
-                    handleInputChange(e.target.value, 'SENDER_CITY/CHANGED')
-                  }
-                />
-              </div>
-              <div className={`${styles.postCode} ${styles.label}`}>
-                <label htmlFor="postCode">Post Code</label>
-                <input
-                  type="number"
-                  id="postCode"
-                  value={sender.senderPostCode}
-                  onChange={(e) =>
-                    handleInputChange(e.target.value, 'SENDER_POSTCODE/CHANGED')
-                  }
-                />
-              </div>
+
+            <div className={`${styles.billFromBtm} ${styles.fromRow}`}>
+              <div className={styles.cityPostCode}>
+
+                <div className={`${styles.city} ${styles.label}`}>
+                  <label htmlFor="city">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    value={sender.senderCity}
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, 'SENDER_CITY/CHANGED')
+                    }
+                  />
+                </div>
+
+                <div className={`${styles.postCode} ${styles.label}`}>
+                  <label htmlFor="postCode">Post Code</label>
+                  <input
+                    type="number"
+                    id="postCode"
+                    value={sender.senderPostCode}
+                    onChange={(e) =>
+                      handleInputChange(
+                        e.target.value,
+                        'SENDER_POSTCODE/CHANGED'
+                      )
+                    }
+                  />
+                </div>
+
+
+
+              </div>{' '}
               <div className={`${styles.country} ${styles.label}`}>
                 <label htmlFor="country">Country</label>
                 <input
                   type="text"
                   id="country"
+                  autoComplete='true'
                   value={sender.senderCountry}
                   onChange={(e) =>
                     handleInputChange(e.target.value, 'SENDER_COUNTRY/CHANGED')
@@ -121,7 +133,8 @@ function Form({ children }) {
                 }
               />
             </div>
-            <div className={styles.billFromBtm}>
+            <div  className={`${styles.billFromBtm} ${styles.fromRow}`}>
+            <div className={styles.cityPostCode}>
               <div className={`${styles.city} ${styles.label}`}>
                 <label htmlFor="clientCity">City</label>
                 <input
@@ -144,6 +157,7 @@ function Form({ children }) {
                   }
                 />
               </div>
+              </div>
               <div className={`${styles.country} ${styles.label}`}>
                 <label htmlFor="clientCountry">Country</label>
                 <input
@@ -156,12 +170,12 @@ function Form({ children }) {
                 />
               </div>
             </div>
-            <div className={styles.billFromBtm}>
+            <div className={`${styles.billFromBtm} ${styles.termsDate}`}>
               <div className={`${styles.date} ${styles.label}`}>
                 <label htmlFor="invoiceDate">Invoice Date</label>
                 <div className={styles.dateHolder}>
                   <DatePicker
-                    id="date"
+                    id="invoiceDate"
                     selected={date}
                     onChange={(date) => handleInputChange(date, 'DATE/CHANGED')}
                     dateFormat="dd MMM yyyy"
@@ -175,7 +189,7 @@ function Form({ children }) {
                 onClick={handleShowPayment}
                 aria-hidden="true"
               >
-                <label htmlFor="paymentTerms">Payment Terms</label>
+                <h4 className={styles.PaymentTerms}>Payment Terms</h4>
                 <p type="text" id="paymentTerms">
                   {' '}
                   <span>
@@ -194,7 +208,7 @@ function Form({ children }) {
             <input
               type="text"
               id="description"
-              placeholder='e.g. Graphic Design Service'
+              placeholder="e.g. Graphic Design Service"
               value={description}
               onChange={(e) =>
                 handleInputChange(e.target.value, 'DESCRIPTION/CHANGED')
@@ -221,7 +235,11 @@ function Form({ children }) {
           </div>
         </form>
       </div>
-      <div className={`${styles.overlay}  ${invoiceFormisOpen && styles.overlayOpen}`}></div>
+      <div
+        className={`${styles.overlay}  ${
+          invoiceFormisOpen && styles.overlayOpen
+        }`}
+      ></div>
     </>
   );
 }

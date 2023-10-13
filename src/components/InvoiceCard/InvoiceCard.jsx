@@ -15,11 +15,14 @@ function InvoiceCard({ invoice }) {
           <p className={styles.dueDate}>
             Due <span className={styles.date}>{invoice.dueDate}</span>
           </p>
+          <p className={`${styles.name} ${styles.desktopName}`}>{invoice.name}</p>
+          <p className={`${styles.amount} ${styles.mobileAmount}`}>£ {invoice.amount}</p>
         </div>
 
-        <p className={styles.name}>{invoice.name}</p>
+     
         <div className={styles.right}>
-          <p className={styles.amount}>£ {invoice.amount}</p>
+        <p className={`${styles.name} ${styles.mobileName}`}>{invoice.name}</p>
+          <p className={`${styles.amount} ${styles.desktopAmount}`}>£ {invoice.amount}</p>
           <div className={styles.status}>
             <span
               className={`${

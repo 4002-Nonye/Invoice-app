@@ -2,8 +2,10 @@
 import React from 'react';
 import styles from './CheckBox.module.css';
 import { useInvoice } from '../../contexts/InvoiceContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 function CheckBox({ id, type }) {
+  const {theme} = useTheme()
   // handle radio check
   const { handleInputChange: handleRadioChange, status } = useInvoice();
 
@@ -27,7 +29,7 @@ function CheckBox({ id, type }) {
   const camelCase = firstLetter.toUpperCase().concat(rest);
 
   return (
-    <label htmlFor={id} className={styles.container}>
+    <label htmlFor={id} className={`${styles.container}  ${theme === 'dark' && styles.dark}`}>
       {camelCase}
       <input
         onClick={handleChecked}

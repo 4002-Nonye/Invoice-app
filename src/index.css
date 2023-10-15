@@ -19,13 +19,14 @@
   --color-border: #494e6e;
   --color-white-0: #fff;
   --color-white-1: #f9fafe;
-  --color-grey--2:#777F98;
+  --color-grey--2: #777f98;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 html {
   font-size: 62.5%; /*  10px */
@@ -34,11 +35,13 @@ body {
   position: relative;
   font-family: 'League Spartan', sans-serif;
   background-color: var(--color-white);
+  transition: 500ms;
 }
-/* body.dark{
-  background-color: var(--color-dark--1);
-} */
-a{
+
+body.dark {
+  background-color: var(--color-darkblue--3);
+}
+a {
   text-decoration: none;
 }
 ul li {
@@ -63,6 +66,9 @@ input[type='number'] {
   line-height: 1.5rem;
   letter-spacing: -0.025rem;
   font-weight: 700;
+}
+.id.dark {
+  color: var(--color-white-0);
 }
 .hash {
   color: var(--color-softblue--1);
@@ -93,8 +99,7 @@ input[type='number'] {
   height: 0.8rem;
   width: 0.8rem;
   border-radius: 50%;
-  margin-top: -.2rem;
-
+  margin-top: -0.2rem;
 }
 .pending::before {
   background-color: var(--color-orange);
@@ -115,6 +120,12 @@ input[type='number'] {
 .draft {
   color: var(--color-darkblue--4);
   background-color: rgba(55, 59, 83, 0.07);
+}
+.draft.dark::before {
+  background-color: var(--color-paleblue--1);
+}
+.draft.dark {
+  color: var(--color-paleblue--1);
 }
 .paid {
   color: var(--color-green);
@@ -192,6 +203,6 @@ input[type='number'] {
   display: none;
 }
 .react-datepicker__day--outside-month {
-  color: var( --color-dark--1);
+  color: var(--color-dark--1);
   opacity: 0.3;
 }

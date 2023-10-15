@@ -5,6 +5,7 @@ import arrowDown from '../../assets/arrow-down.svg';
 import arrowUp from '../../assets/arrow-up.svg';
 import CheckBox from '../CheckBox/CheckBox';
 import useId from '../../hooks/useId';
+import { useTheme } from '../../contexts/ThemeContext';
 
 // options for filter box
 const filterOptions = [
@@ -23,6 +24,7 @@ const filterOptions = [
 ];
 
 function Filter() {
+  const {theme} =useTheme()
   const [isOpen, setIsOpen] = useState(false);
 
   // function to display/hide filter box
@@ -33,7 +35,7 @@ function Filter() {
   return (
     <div className={styles.filterBox}>
       <div
-        className={styles.filter}
+        className={`${styles.filter} ${theme === 'dark' && styles.dark}`}
         onClick={handleShowFilter}
         aria-hidden="true"
       >
@@ -44,7 +46,7 @@ function Filter() {
         <img src={isOpen ? arrowUp : arrowDown} alt="arrow-icon" />
       </div>
 
-      <div className={`${styles.filterOpt} ${isOpen && styles.open}`}>
+      <div className={`${styles.filterOpt} ${isOpen && styles.open}  ${theme === 'dark' && styles.dark}`}>
         {filterOptions.map((option, index) => (
           <CheckBox key={index} id={option.statusText} type={option.type} />
         ))}

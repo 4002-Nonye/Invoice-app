@@ -6,7 +6,11 @@
   border-radius: 0.8rem;
   background: var(--color-white-0);
   box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
-    height: 8.2rem;
+  height: 8.2rem;
+  transition: 500ms;
+}
+.invoiceItem.dark {
+  background-color: var(--color-darkblue--1);
 }
 .invoiceItem:hover {
   border: 1px solid var(--color-lightblue--1);
@@ -18,23 +22,30 @@
   gap: 6rem;
 }
 
-
 .dueDate {
   color: var(--color-grey--1);
   font-size: 1.3rem;
   font-weight: 500;
-  line-height: 1.5rem; 
+  line-height: 1.5rem;
   letter-spacing: -0.01rem;
+}
+.dueDate.dark,
+.date.dark {
+  color: var(--color-paleblue--1);
 }
 .date {
   color: var(--color-softblue--1);
 }
+
 .name {
   color: var(--color-softblue--2);
   font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.5rem;
   letter-spacing: -0.01rem;
+}
+.name.dark{
+  color: var(--color-white-0);
 }
 .amount {
   color: var(--color-dark--1);
@@ -44,47 +55,50 @@
   line-height: 2.4rem;
   letter-spacing: -0.025rem;
 }
+.amount.dark {
+  color: var(--color-white-0);
+}
 .status {
   display: inline-flex;
   align-items: center;
   gap: 3rem;
- 
 }
-.mobileName,.mobileAmount{
+.mobileName,
+.mobileAmount {
   display: none;
 }
 @media screen and (max-width: 768px) {
-.left{
-  gap: 4rem;
-}
+  .left {
+    gap: 4rem;
+  }
 }
 @media screen and (max-width: 500px) {
-  .invoiceItem{
+  .invoiceItem {
     height: 100%;
     width: 100%;
     align-items: flex-start;
     padding: 2rem;
   }
-  .left,.right{
+  .left,
+  .right {
     display: flex;
     flex-direction: column;
- 
   }
-  .left{
+  .left {
     align-items: flex-start;
-
   }
-  .right{
+  .right {
     align-items: flex-end;
   }
-  .arrow,.desktopAmount,.desktopName{
+  .arrow,
+  .desktopAmount,
+  .desktopName {
     display: none;
   }
-  .mobileName{
+  .mobileName {
     display: block;
   }
-  .mobileAmount{
+  .mobileAmount {
     display: block;
   }
-  
 }

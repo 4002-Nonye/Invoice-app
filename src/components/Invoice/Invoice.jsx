@@ -7,10 +7,12 @@ import Filter from '../Filter/Filter';
 import InvoiceCard from '../InvoiceCard/InvoiceCard';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../contexts/FormContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 function Invoice() {
   const { invoices, status } = useInvoice();
   const { handleOpenForm } = useForm();
+  const { theme } = useTheme();
 
   // filter invoices according to invoice status
   const FilteredInvoices = invoices.filter((invoice) => {
@@ -20,8 +22,12 @@ function Invoice() {
 
   return (
     <div className={styles.invoice}>
-      <div className={styles.invoiceHeadWrapper}>
-        <div className={styles.invoiceHead}>
+      <div className={`${styles.invoiceHeadWrapper}  ${theme === 'dark' && styles.dark}`}>
+        <div
+          className={`${styles.invoiceHead}  ${
+            theme === 'dark' && styles.dark
+          }`}
+        >
           <h1>Invoices</h1>
           <span>
             {invoices.length > 0
@@ -40,7 +46,9 @@ function Invoice() {
             onClick={handleOpenForm}
           >
             <img src={add} alt="add-icon" />
-            <span>New <span className={styles.mobileInvoice}>Invoice</span></span>
+            <span>
+              New <span className={styles.mobileInvoice}>Invoice</span>
+            </span>
           </button>
         </div>
       </div>

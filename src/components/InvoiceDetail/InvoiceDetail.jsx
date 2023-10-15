@@ -3,6 +3,8 @@ import styles from './InvoiceDetail.module.css';
 import arrowLeft from '../../assets/arrow-left.svg';
 import Button from '../Button/Button';
 import { v4 as uuidv4 } from 'uuid';
+import { useTheme } from '../../contexts/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 const invoice = {
   id: 'XM9140',
   senderAddress: `19 Union Terrace`,
@@ -37,33 +39,31 @@ const invoice = {
       price: 156.0,
       total: 156.0,
     },
-    {
-      id: uuidv4(),
-      name: 'Banner Design',
-      qty: 1,
-      price: 156.0,
-      total: 156.0,
-    },
-    {
-      id: uuidv4(),
-      name: 'Banner Design',
-      qty: 1,
-      price: 156.0,
-      total: 156.0,
-    },
   ],
 };
 function InvoiceDetail() {
+  const { theme } = useTheme();
+  const navigate = useNavigate();
+
+  // function to handle navigation to home page
+  const handleGoHome = () => {
+    navigate('/');
+  };
+  
   return (
     <div className={styles.invoiceDetail}>
-      <Button btnClass={styles.btnBack} type="button">
+      <Button
+        btnClass={`${styles.btnBack}  ${theme === 'dark' && styles.dark}`}
+        type="button"
+        onClick={handleGoHome}
+      >
         <span>
           <img src={arrowLeft} alt="arrow-icon" />
         </span>
         Go back
       </Button>
 
-      <div className={styles.head}>
+      <div className={`${styles.head} ${theme === 'dark' && styles.dark}`}>
         <div className={styles.status}>
           <span> status</span>
           <span
@@ -71,7 +71,7 @@ function InvoiceDetail() {
               invoice.status === 'pending'
                 ? 'pending'
                 : invoice.status === 'draft'
-                ? 'draft'
+                ? `draft  ${theme === 'dark' && 'dark'}`
                 : invoice.status === 'paid'
                 ? 'paid'
                 : ''
@@ -98,14 +98,28 @@ function InvoiceDetail() {
         </div>
       </div>
       <div>
-        <div className={styles.invoiceInfoWrapper}>
+        <div
+          className={`${styles.invoiceInfoWrapper} ${
+            theme === 'dark' && styles.dark
+          } `}
+        >
           <div className={styles.topInfo}>
-            <p className={` id`}>
+            <p className={`id  ${theme === 'dark' && 'dark'}`}>
               <span className={` hash`}> #</span>
               {invoice.id}
-              <span className={styles.description}>{invoice.description}</span>
+              <span
+                className={`${styles.description} ${
+                  theme === 'dark' && styles.dark
+                }`}
+              >
+                {invoice.description}
+              </span>
             </p>
-            <div className={`${styles.address} ${styles.senderAddress}`}>
+            <div
+              className={`${styles.address} ${styles.senderAddress}  ${
+                theme === 'dark' && styles.dark
+              }`}
+            >
               <span>{invoice.senderAddress}</span>
               <span>{invoice.senderCity}</span>
               <span>{invoice.senderPostCode}</span>
@@ -117,22 +131,58 @@ function InvoiceDetail() {
             <div className={styles.flex}>
               <div className={styles.column}>
                 <div className={styles.dateWrapper}>
-                  <p className={`${styles.headText}`}>Invoice Date</p>
-                  <p className={styles.dateNameEmail}>{invoice.dueDate}</p>
+                  <p
+                    className={`${styles.headText}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
+                    Invoice Date
+                  </p>
+                  <p
+                    className={`${styles.dateNameEmail}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
+                    {invoice.dueDate}
+                  </p>
                 </div>
                 <div className={styles.paymentDue}>
-                  <p className={`${styles.headText}`}>Payment Due</p>
-                  <p className={styles.dateNameEmail}>20 Sep 2021 </p>
+                  <p
+                    className={`${styles.headText}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
+                    Payment Due
+                  </p>
+                  <p
+                    className={`${styles.dateNameEmail}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
+                    20 Sep 2021{' '}
+                  </p>
                 </div>
               </div>
 
               <div className={styles.dateWrapper}>
-                <p className={`${styles.headText}`}>Bill To</p>
-                <p className={`${styles.dateNameEmail} ${styles.name}`}>
+                <p
+                  className={`${styles.headText}  ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                >
+                  Bill To
+                </p>
+                <p
+                  className={`${styles.dateNameEmail}  ${
+                    theme === 'dark' && styles.dark
+                  } ${styles.name}`}
+                >
                   {invoice.name}
                 </p>
                 <div
-                  className={`${styles.address} ${styles.clientAddress} ${styles.text}`}
+                  className={`${styles.address} ${styles.clientAddress} ${
+                    styles.text
+                  }  ${theme === 'dark' && styles.dark}`}
                 >
                   <span>{invoice.clientAddress}</span>
                   <span>{invoice.clientCity}</span>
@@ -142,14 +192,34 @@ function InvoiceDetail() {
               </div>
             </div>
             <div>
-              <p className={`${styles.headText}`}>Sent to</p>
-              <p className={styles.dateNameEmail}>{invoice.clientEmail}</p>
+              <p
+                className={`${styles.headText}  ${
+                  theme === 'dark' && styles.dark
+                }`}
+              >
+                Sent to
+              </p>
+              <p
+                className={`${styles.dateNameEmail}  ${
+                  theme === 'dark' && styles.dark
+                }`}
+              >
+                {invoice.clientEmail}
+              </p>
             </div>
           </div>
 
-          <table className={styles.itemWrapper}>
+          <table
+            className={`${styles.itemWrapper} ${
+              theme === 'dark' && styles.dark
+            }`}
+          >
             <thead>
-              <tr className={styles.fields}>
+              <tr
+                className={`${styles.fields}  ${
+                  theme === 'dark' && styles.dark
+                }`}
+              >
                 <th className={styles.textLeft}>Item Name</th>
                 <th className={styles.textCenter}>QTY.</th>
                 <th className={styles.textRight}>Price</th>
@@ -160,25 +230,41 @@ function InvoiceDetail() {
             <tbody>
               {invoice.itemList.map((item) => (
                 <tr key={item.id} className={styles.fieldValues}>
-                  <td className={`${styles.textLeft} ${styles.name}`}>
+                  <td
+                    className={`${styles.textLeft} ${styles.name}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
                     {item.name}
-                    <span className={styles.mobileData} >
+                    <span className={styles.mobileData}>
                       {item.qty} x £{' '}
                       {item.price.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                       })}
                     </span>
                   </td>
-                  <td className={`${styles.textCenter} ${styles.qty}`}>
+                  <td
+                    className={`${styles.textCenter} ${styles.qty}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
                     {item.qty}
                   </td>
-                  <td className={`${styles.textRight} ${styles.price}`}>
+                  <td
+                    className={`${styles.textRight} ${styles.price}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
                     £{' '}
                     {item.price.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
                     })}
                   </td>
-                  <td className={`${styles.textRight} ${styles.total}`}>
+                  <td
+                    className={`${styles.textRight} ${styles.total}  ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                  >
                     £{' '}
                     {item.total.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
@@ -188,7 +274,9 @@ function InvoiceDetail() {
               ))}
             </tbody>
           </table>
-          <div className={styles.amountDue}>
+          <div
+            className={`${styles.amountDue} ${theme === 'dark' && styles.dark}`}
+          >
             <p>Amount Due</p>
             <p>£ 556.00</p>
           </div>

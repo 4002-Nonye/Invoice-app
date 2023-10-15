@@ -20,7 +20,6 @@
   background: var(--color-white-1);
   height: 4.8rem;
   width: 100%;
- 
 }
 .add:hover {
   background: var(--color-paleblue--1);
@@ -33,7 +32,6 @@
 .draft {
   background: var(--color-darkblue--4);
   color: var(--color-grey--1);
-  
 }
 .draft:hover {
   background: var(--color-dark--1);
@@ -63,7 +61,13 @@
   color: var(--color-softblue--1);
   width: 7.3rem;
 }
-.edit:hover{
+.edit.dark {
+  background: var(--color-darkblue--2);
+}
+.edit.dark:hover {
+  background: var(--color-darkblue--4);
+}
+.edit:hover {
   background: var(--color-softblue--1);
   color: var(--color-white-0);
 }
@@ -73,7 +77,7 @@
   background: var(--color-softred--1);
   width: 8.9rem;
 }
-.delete:hover{
+.delete:hover {
   background: var(--color-softred--2);
 }
 .paid {
@@ -81,14 +85,14 @@
   background: var(--color-lightblue--1);
   width: 13.1rem;
 }
-.paid:hover{
-  background:var( --color-lightblue--2) ;
+.paid:hover {
+  background: var(--color-lightblue--2);
 }
 
-
 @media screen and (max-width: 500px) {
-  .edit,.paid,.delete{
- /* width: 100%; */
+  .edit,
+  .paid,
+  .delete {
+    /* width: 100%; */
   }
-   
- }
+}

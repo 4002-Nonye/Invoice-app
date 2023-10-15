@@ -13,6 +13,9 @@
   border: none;
   gap: 1rem;
 }
+.btnBack.dark {
+  color: var(--color-white-0);
+}
 .head {
   display: flex;
   align-items: center;
@@ -23,6 +26,11 @@
   height: 8.8rem;
   padding: 0 2rem;
   margin-top: 3rem;
+  transition: 500ms;
+}
+.head.dark,
+.invoiceInfoWrapper.dark {
+  background: var(--color-darkblue--1);
 }
 .status {
   color: var(--color-softblue--2);
@@ -47,6 +55,7 @@
   padding: 5rem;
   margin-top: 4rem;
   height: 100%;
+  transition: 500ms;
 }
 
 .topInfo {
@@ -71,6 +80,11 @@
   font-weight: 500;
   line-height: 1.8rem;
   letter-spacing: -0.01rem;
+}
+.address.dark,
+.description.dark,
+.headText.dark {
+  color: var(--color-paleblue--1);
 }
 .midInfo {
   display: flex;
@@ -104,6 +118,11 @@
   line-height: 2rem;
   letter-spacing: -0.025rem;
 }
+.dateNameEmail.dark,
+.name.dark,
+.total.dark {
+  color: var(--color-white-0);
+}
 .name {
   margin-bottom: 1rem;
 }
@@ -117,9 +136,13 @@
   border-radius: 0.8rem 0.8rem 0 0;
   border-spacing: 0;
   border-collapse: separate;
-
+  transition: 500ms;
+  
 }
-.mobileData{
+.itemWrapper.dark {
+  background-color: var(--color-darkblue--2);
+}
+.mobileData {
   display: none;
 }
 .fields th {
@@ -137,7 +160,8 @@
 .total {
   font-size: 1.7rem;
 }
-.fields,.mobileData{
+.fields,
+.mobileData {
   color: var(--color-softblue--1);
   font-size: 1.3rem;
   font-weight: 500;
@@ -155,6 +179,11 @@
   line-height: 1.5rem;
   letter-spacing: -0.025rem;
 }
+.qty.dark,
+.price.dark,
+.fields.dark {
+  color: var(--color-paleblue--1);
+}
 .amountDue {
   border-radius: 0px 0px 8px 8px;
   background: var(--color-darkblue--4);
@@ -167,6 +196,9 @@
   font-weight: 700;
   line-height: 1.8rem;
   letter-spacing: -0.05rem;
+}
+.amountDue.dark {
+  background-color: var(--color-dark--1);
 }
 
 .amountDue p:nth-child(2) {
@@ -187,11 +219,11 @@
 }
 
 @media screen and (max-width: 500px) {
-  .invoiceDetail{
+  .invoiceDetail {
     margin-bottom: 4rem;
     margin-top: 5rem;
   }
-  .invoiceInfoWrapper{
+  .invoiceInfoWrapper {
     padding: 2rem;
   }
   .midInfo {
@@ -209,34 +241,34 @@
     bottom: -10rem;
     left: 0;
     right: 0;
-    background:var(--color-white-0);
+    background: var(--color-white-0);
     box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
   }
-  .status{
+  .status {
     justify-content: space-between;
     width: 100%;
   }
-  .flex{
+  .flex {
     gap: 7rem;
   }
-  .topInfo{
+  .topInfo {
     flex-direction: column;
     gap: 3rem;
   }
-  .senderAddress{
+  .senderAddress {
     text-align: left;
   }
-  thead{
+  thead {
     display: none;
   }
-  .qty,.price{
+  .qty,
+  .price {
     display: none;
   }
-  .mobileData{
+  .mobileData {
     display: block;
     padding-top: 1rem;
     font-size: 1.5rem;
     font-weight: 700;
   }
- 
 }

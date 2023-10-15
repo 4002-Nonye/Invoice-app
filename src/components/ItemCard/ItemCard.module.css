@@ -1,0 +1,80 @@
+.fieldValues td {
+  padding-bottom: 3rem;
+}
+
+.textCenter {
+  text-align: center;
+}
+.textLeft {
+  text-align: left;
+}
+.textRight {
+  text-align: right;
+}
+
+.name {
+  color: var(--color-dark--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+  letter-spacing: -0.025rem;
+}
+
+.name.dark {
+  color: var(--color-white-0);
+}
+.name {
+  margin-bottom: 1rem;
+}
+.mobileData {
+  display: none;
+}
+
+.mobileData {
+  color: var(--color-softblue--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  letter-spacing: -0.01rem;
+}
+
+.qty,
+.price {
+  color: var(--color-softblue--1);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
+}
+.qty.dark,
+.price.dark {
+  color: var(--color-paleblue--1);
+}
+
+
+.total {
+  color: var(--color-dark--1);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 2rem;
+  letter-spacing: -0.025rem;
+}
+
+
+
+.total.dark {
+  color: var(--color-white-0);
+}
+
+@media screen and (max-width: 500px) {
+  .qty,
+  .price {
+    display: none;
+  }
+  .mobileData {
+    display: block;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}

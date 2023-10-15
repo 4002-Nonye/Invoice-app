@@ -8,8 +8,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import arrowDown from '../../assets/arrow-down.svg';
 import arrowUp from '../../assets/arrow-up.svg';
 import PaymentTerms from '../PaymentTerms/PaymentTerms';
-import { useInvoice } from '../../contexts/InvoiceContext';
 import { useForm } from '../../contexts/FormContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 function Form({ children }) {
   const {
@@ -21,6 +21,7 @@ function Form({ children }) {
     description,
     invoiceFormisOpen,
   } = useForm();
+  const { theme } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,14 +33,29 @@ function Form({ children }) {
   return (
     <>
       {' '}
-      <div className={`${styles.form}  ${invoiceFormisOpen && styles.open}`}>
-        <h2 className={styles.title}> {children}</h2>
+      <div
+        className={`${styles.form}  ${invoiceFormisOpen && styles.open}  ${
+          theme === 'dark' && styles.dark
+        }`}
+      >
+        <h2 className={` ${styles.title} ${theme === 'dark' && styles.dark}`}>
+          {' '}
+          {children}
+        </h2>
         <form>
           <div className={styles.billFrom}>
             <h3 className={styles.formH3}>Bill From</h3>
             <div className={`${styles.address} ${styles.label}`}>
-              <label htmlFor="streetAddress">Street Address</label>
+              <label
+                htmlFor="streetAddress"
+                className={` ${styles.label} ${
+                  theme === 'dark' && styles.dark
+                }`}
+              >
+                Street Address
+              </label>
               <input
+                className={` ${theme === 'dark' && styles.dark}`}
                 type="text"
                 id="streetAddress"
                 value={sender.senderAddress}
@@ -51,10 +67,17 @@ function Form({ children }) {
 
             <div className={`${styles.billFromBtm} ${styles.fromRow}`}>
               <div className={styles.cityPostCode}>
-
                 <div className={`${styles.city} ${styles.label}`}>
-                  <label htmlFor="city">City</label>
+                  <label
+                    className={` ${styles.label} ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                    htmlFor="city"
+                  >
+                    City
+                  </label>
                   <input
+                    className={` ${theme === 'dark' && styles.dark}`}
                     type="text"
                     id="city"
                     value={sender.senderCity}
@@ -65,8 +88,16 @@ function Form({ children }) {
                 </div>
 
                 <div className={`${styles.postCode} ${styles.label}`}>
-                  <label htmlFor="postCode">Post Code</label>
+                  <label
+                    className={` ${styles.label} ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                    htmlFor="postCode"
+                  >
+                    Post Code
+                  </label>
                   <input
+                    className={` ${theme === 'dark' && styles.dark}`}
                     type="number"
                     id="postCode"
                     value={sender.senderPostCode}
@@ -78,16 +109,21 @@ function Form({ children }) {
                     }
                   />
                 </div>
-
-
-
               </div>{' '}
               <div className={`${styles.country} ${styles.label}`}>
-                <label htmlFor="country">Country</label>
+                <label
+                  className={` ${styles.label} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                  htmlFor="country"
+                >
+                  Country
+                </label>
                 <input
+                  className={` ${theme === 'dark' && styles.dark}`}
                   type="text"
                   id="country"
-                  autoComplete='true'
+                  autoComplete="true"
                   value={sender.senderCountry}
                   onChange={(e) =>
                     handleInputChange(e.target.value, 'SENDER_COUNTRY/CHANGED')
@@ -100,8 +136,16 @@ function Form({ children }) {
           <div className={styles.billTo}>
             <h3 className={styles.formH3}>Bill To</h3>
             <div className={`${styles.client} ${styles.label}`}>
-              <label htmlFor="clientName">Client&apos;s Name</label>
+              <label
+                className={` ${styles.label} ${
+                  theme === 'dark' && styles.dark
+                }`}
+                htmlFor="clientName"
+              >
+                Client&apos;s Name
+              </label>
               <input
+                className={` ${theme === 'dark' && styles.dark}`}
                 type="text"
                 id="clientName"
                 value={client.clientName}
@@ -111,8 +155,16 @@ function Form({ children }) {
               />
             </div>
             <div className={`${styles.clientEmail} ${styles.label}`}>
-              <label htmlFor="clientEmail">Client&apos;s Email</label>
+              <label
+                className={` ${styles.label} ${
+                  theme === 'dark' && styles.dark
+                }`}
+                htmlFor="clientEmail"
+              >
+                Client&apos;s Email
+              </label>
               <input
+                className={` ${theme === 'dark' && styles.dark}`}
                 type="text"
                 id="clientEmail"
                 placeholder="e.g. email@example.com"
@@ -123,8 +175,16 @@ function Form({ children }) {
               />
             </div>
             <div className={`${styles.clientAddress} ${styles.label}`}>
-              <label htmlFor="clientAddress">Street Address</label>
+              <label
+                className={` ${styles.label} ${
+                  theme === 'dark' && styles.dark
+                }`}
+                htmlFor="clientAddress"
+              >
+                Street Address
+              </label>
               <input
+                className={` ${theme === 'dark' && styles.dark}`}
                 type="text"
                 id="clientAddress"
                 value={client.clientAddress}
@@ -133,34 +193,61 @@ function Form({ children }) {
                 }
               />
             </div>
-            <div  className={`${styles.billFromBtm} ${styles.fromRow}`}>
-            <div className={styles.cityPostCode}>
-              <div className={`${styles.city} ${styles.label}`}>
-                <label htmlFor="clientCity">City</label>
-                <input
-                  type="text"
-                  id="clientCity"
-                  value={client.clientCity}
-                  onChange={(e) =>
-                    handleInputChange(e.target.value, 'CLIENT_CITY/CHANGED')
-                  }
-                />
-              </div>
-              <div className={`${styles.postCode} ${styles.label}`}>
-                <label htmlFor="clientPostCode">Post Code</label>
-                <input
-                  type="number"
-                  id="clientPostCode"
-                  value={client.clientPostCode}
-                  onChange={(e) =>
-                    handleInputChange(e.target.value, 'CLIENT_POSTCODE/CHANGED')
-                  }
-                />
-              </div>
+            <div className={`${styles.billFromBtm} ${styles.fromRow}`}>
+              <div className={styles.cityPostCode}>
+                <div className={`${styles.city} ${styles.label}`}>
+                  <label
+                    className={` ${styles.label} ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                    htmlFor="clientCity"
+                  >
+                    City
+                  </label>
+                  <input
+                    className={` ${theme === 'dark' && styles.dark}`}
+                    type="text"
+                    id="clientCity"
+                    value={client.clientCity}
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, 'CLIENT_CITY/CHANGED')
+                    }
+                  />
+                </div>
+                <div className={`${styles.postCode} ${styles.label}`}>
+                  <label
+                    className={` ${styles.label} ${
+                      theme === 'dark' && styles.dark
+                    }`}
+                    htmlFor="clientPostCode"
+                  >
+                    Post Code
+                  </label>
+                  <input
+                    className={` ${theme === 'dark' && styles.dark}`}
+                    type="number"
+                    id="clientPostCode"
+                    value={client.clientPostCode}
+                    onChange={(e) =>
+                      handleInputChange(
+                        e.target.value,
+                        'CLIENT_POSTCODE/CHANGED'
+                      )
+                    }
+                  />
+                </div>
               </div>
               <div className={`${styles.country} ${styles.label}`}>
-                <label htmlFor="clientCountry">Country</label>
+                <label
+                  className={` ${styles.label} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                  htmlFor="clientCountry"
+                >
+                  Country
+                </label>
                 <input
+                  className={` ${theme === 'dark' && styles.dark}`}
                   type="text"
                   id="clientCountry"
                   value={client.clientCountry}
@@ -172,8 +259,19 @@ function Form({ children }) {
             </div>
             <div className={`${styles.billFromBtm} ${styles.termsDate}`}>
               <div className={`${styles.date} ${styles.label}`}>
-                <label htmlFor="invoiceDate">Invoice Date</label>
-                <div className={styles.dateHolder}>
+                <label
+                  className={` ${styles.label} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                  htmlFor="invoiceDate"
+                >
+                  Invoice Date
+                </label>
+                <div
+                  className={`${styles.dateHolder} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                >
                   <DatePicker
                     id="invoiceDate"
                     selected={date}
@@ -189,8 +287,18 @@ function Form({ children }) {
                 onClick={handleShowPayment}
                 aria-hidden="true"
               >
-                <h4 className={styles.PaymentTerms}>Payment Terms</h4>
-                <p type="text" id="paymentTerms">
+                <h4
+                  className={`${styles.PaymentTerms} ${styles.terms} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                >
+                  Payment Terms
+                </h4>
+                <p
+                  type="text"
+                  id="paymentTerms"
+                  className={` ${theme === 'dark' && styles.dark}`}
+                >
                   {' '}
                   <span>
                     {' '}
@@ -204,8 +312,14 @@ function Form({ children }) {
           </div>
 
           <div className={`${styles.description} ${styles.label}`}>
-            <label htmlFor="description">Project Description</label>
+            <label
+              className={` ${styles.label} ${theme === 'dark' && styles.dark}`}
+              htmlFor="description"
+            >
+              Project Description
+            </label>
             <input
+              className={` ${theme === 'dark' && styles.dark}`}
               type="text"
               id="description"
               placeholder="e.g. Graphic Design Service"

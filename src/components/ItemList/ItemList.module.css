@@ -1,11 +1,21 @@
 .itemList {
   display: flex;
   flex-direction: column;
-  /* max-height: 12rem; */
   width: 100%;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+input {
+  border: 1px solid var(--color-paleblue--1);
+  background: var(--color-white-0);
+  color: var(--color-dark--1);
+}
+
+input.dark {
+  color: var(--color-white-0);
+  border: 1px solid var(--color-darkblue--2);
+  background: var(--color-darkblue--1);
 }
 ::-webkit-scrollbar {
   display: none;
@@ -24,15 +34,18 @@
   letter-spacing: -0.01rem;
   padding: 1rem 0;
 }
+.fields.dark,
+.mobileLabel.dark {
+  color: var(--color-paleblue--1);
+}
 
 .data {
   display: flex;
   gap: 2rem;
   align-items: center;
   position: relative;
-
 }
-.delete{
+.delete {
   position: absolute;
   right: 0;
 }
@@ -55,6 +68,9 @@
   white-space: nowrap;
   overflow: auto;
   scrollbar-width: 0;
+}
+.total.dark {
+  color: var(--color-white-0);
 }
 .delete {
   cursor: pointer;
@@ -97,25 +113,23 @@
   .itemName {
     width: 100%;
   }
-  .row{
+  .row {
     justify-content: space-between;
-   
   }
- .delete{
-  position: unset;
-  margin-top: 3rem;
- }
+  .delete {
+    position: unset;
+    margin-top: 3rem;
+  }
 }
 
-
 @media screen and (max-width: 400px) {
-  .qty{
+  .qty {
     width: 4rem;
   }
-  .price{
+  .price {
     width: 8rem;
   }
-  .total{
+  .total {
     width: 7rem;
   }
 }

@@ -5,6 +5,8 @@ import Button from '../Button/Button';
 import { v4 as uuidv4 } from 'uuid';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useNavigate } from 'react-router-dom';
+import ItemCard from '../ItemCard/ItemCard';
+import Address from '../Address/Address';
 const invoice = {
   id: 'XM9140',
   senderAddress: `19 Union Terrace`,
@@ -49,7 +51,7 @@ function InvoiceDetail() {
   const handleGoHome = () => {
     navigate('/');
   };
-  
+
   return (
     <div className={styles.invoiceDetail}>
       <Button
@@ -115,7 +117,8 @@ function InvoiceDetail() {
                 {invoice.description}
               </span>
             </p>
-            <div
+            <Address invoice={invoice}/>
+            {/* <div
               className={`${styles.address} ${styles.senderAddress}  ${
                 theme === 'dark' && styles.dark
               }`}
@@ -124,7 +127,7 @@ function InvoiceDetail() {
               <span>{invoice.senderCity}</span>
               <span>{invoice.senderPostCode}</span>
               <span>{invoice.senderCountry}</span>
-            </div>
+            </div> */}
           </div>
 
           <div className={styles.midInfo}>
@@ -179,16 +182,7 @@ function InvoiceDetail() {
                 >
                   {invoice.name}
                 </p>
-                <div
-                  className={`${styles.address} ${styles.clientAddress} ${
-                    styles.text
-                  }  ${theme === 'dark' && styles.dark}`}
-                >
-                  <span>{invoice.clientAddress}</span>
-                  <span>{invoice.clientCity}</span>
-                  <span>{invoice.clientPostCode}</span>
-                  <span>{invoice.clientCountry}</span>
-                </div>
+               <Address invoice={invoice}/>
               </div>
             </div>
             <div>
@@ -229,48 +223,7 @@ function InvoiceDetail() {
 
             <tbody>
               {invoice.itemList.map((item) => (
-                <tr key={item.id} className={styles.fieldValues}>
-                  <td
-                    className={`${styles.textLeft} ${styles.name}  ${
-                      theme === 'dark' && styles.dark
-                    }`}
-                  >
-                    {item.name}
-                    <span className={styles.mobileData}>
-                      {item.qty} x £{' '}
-                      {item.price.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                      })}
-                    </span>
-                  </td>
-                  <td
-                    className={`${styles.textCenter} ${styles.qty}  ${
-                      theme === 'dark' && styles.dark
-                    }`}
-                  >
-                    {item.qty}
-                  </td>
-                  <td
-                    className={`${styles.textRight} ${styles.price}  ${
-                      theme === 'dark' && styles.dark
-                    }`}
-                  >
-                    £{' '}
-                    {item.price.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}
-                  </td>
-                  <td
-                    className={`${styles.textRight} ${styles.total}  ${
-                      theme === 'dark' && styles.dark
-                    }`}
-                  >
-                    £{' '}
-                    {item.total.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                    })}
-                  </td>
-                </tr>
+                <ItemCard key={item.id} item={item} />
               ))}
             </tbody>
           </table>

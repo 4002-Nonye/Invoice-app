@@ -4,10 +4,12 @@ import InvoiceDetails from './pages/InvoiceDetails/InvoiceDetails';
 import { InvoiceProvider } from './contexts/InvoiceContext';
 import { FormProvider } from './contexts/FormContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop>
       <ThemeProvider>
         <FormProvider>
           {' '}
@@ -19,6 +21,7 @@ function App() {
           </InvoiceProvider>
         </FormProvider>
       </ThemeProvider>
+      </ScrollToTop>
     </BrowserRouter>
   );
 }

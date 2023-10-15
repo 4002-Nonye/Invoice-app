@@ -86,8 +86,8 @@
 }
 @media screen and (max-width: 500px) {
   .invoice {
-    width: 90%;
-    margin-top: 5rem;
+    width: 85%;
+    margin-top: 12rem;
   }
   .addInvoice {
     width: 9rem;

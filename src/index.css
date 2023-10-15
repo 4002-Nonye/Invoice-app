@@ -149,6 +149,7 @@ input[type='number'] {
   letter-spacing: -0.25px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .react-datepicker__header {
   background-color: var(--color-white-0);

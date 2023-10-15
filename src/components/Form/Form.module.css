@@ -23,6 +23,13 @@ input,
   margin-bottom: 1rem;
 }
 
+input.dark,
+.terms > p.dark,
+.dateHolder.dark {
+  color: var(--color-white-0);
+  border: 1px solid var(--color-darkblue--2);
+  background: var(--color-darkblue--1);
+}
 .form {
   position: fixed;
   width: 40%;
@@ -43,6 +50,9 @@ input,
   opacity: 0;
   transition: 500ms;
 }
+.form.dark {
+  background-color: var(--color-darkblue--3);
+}
 .open {
   left: 8rem;
   opacity: 1;
@@ -56,6 +66,9 @@ input,
   font-weight: 700;
   line-height: 3.2rem;
   letter-spacing: -0.05rem;
+}
+.title.dark{
+  color: var(--color-white-0);
 }
 .formH3 {
   color: var(--color-lightblue--1);
@@ -71,7 +84,8 @@ input,
   flex-direction: column;
   gap: 0.8rem;
 }
-.label label,.PaymentTerms {
+.label,
+.PaymentTerms {
   color: var(--color-softblue--1);
   font-size: 1.3rem;
   font-weight: 500;
@@ -79,7 +93,10 @@ input,
   letter-spacing: -0.01rem;
   padding: 1rem 0;
 }
-
+.label.dark,
+.PaymentTerms.dark {
+  color: var(--color-paleblue--1);
+}
 .address input {
   width: 100%;
 }
@@ -97,7 +114,6 @@ input,
 .cityPostCode {
   display: flex;
   gap: 3rem;
-  
 }
 .dateHolder {
   display: flex;
@@ -120,7 +136,7 @@ input,
 .terms {
   position: relative;
 }
-.termsDate div{
+.termsDate div {
   width: 100%;
 }
 .terms > p {
@@ -196,7 +212,7 @@ input,
     padding: 13rem 2rem 4rem;
     top: 0;
   }
-  .fromRow{
+  .fromRow {
     flex-direction: column;
   }
   .termsDate {

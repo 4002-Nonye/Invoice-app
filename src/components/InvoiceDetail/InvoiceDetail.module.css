@@ -67,10 +67,8 @@
   display: block;
   margin-top: 1rem;
 }
-.senderAddress {
-  text-align: right;
-}
-.address,
+
+
 .description,
 .headText {
   display: flex;
@@ -81,7 +79,7 @@
   line-height: 1.8rem;
   letter-spacing: -0.01rem;
 }
-.address.dark,
+
 .description.dark,
 .headText.dark {
   color: var(--color-paleblue--1);
@@ -101,31 +99,23 @@
   gap: 2rem;
   align-items: center;
 }
-.clientAddress {
-  text-align: left;
-}
+
 
 .headText {
   padding: 1rem 0;
 }
 
-.dateNameEmail,
-.name,
-.total {
+.dateNameEmail {
   color: var(--color-dark--1);
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 2rem;
   letter-spacing: -0.025rem;
 }
-.dateNameEmail.dark,
-.name.dark,
-.total.dark {
+.dateNameEmail.dark {
   color: var(--color-white-0);
 }
-.name {
-  margin-bottom: 1rem;
-}
+
 .itemWrapper {
   padding: 1rem 2rem;
   margin-top: 8rem;
@@ -142,11 +132,23 @@
 .itemWrapper.dark {
   background-color: var(--color-darkblue--2);
 }
-.mobileData {
-  display: none;
-}
+
 .fields th {
   padding: 2rem 0;
+}
+
+.fields {
+  color: var(--color-softblue--1);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  letter-spacing: -0.01rem;
+}
+
+
+
+.fields.dark {
+  color: var(--color-paleblue--1);
 }
 .textCenter {
   text-align: center;
@@ -157,33 +159,7 @@
 .textRight {
   text-align: right;
 }
-.total {
-  font-size: 1.7rem;
-}
-.fields,
-.mobileData {
-  color: var(--color-softblue--1);
-  font-size: 1.3rem;
-  font-weight: 500;
-  line-height: 1.8rem;
-  letter-spacing: -0.01rem;
-}
-.fieldValues td {
-  padding-bottom: 3rem;
-}
-.qty,
-.price {
-  color: var(--color-softblue--1);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  letter-spacing: -0.025rem;
-}
-.qty.dark,
-.price.dark,
-.fields.dark {
-  color: var(--color-paleblue--1);
-}
+
 .amountDue {
   border-radius: 0px 0px 8px 8px;
   background: var(--color-darkblue--4);
@@ -219,9 +195,11 @@
 }
 
 @media screen and (max-width: 500px) {
+
   .invoiceDetail {
+    width: 85%;
     margin-bottom: 4rem;
-    margin-top: 5rem;
+    margin-top: 7rem;
   }
   .invoiceInfoWrapper {
     padding: 2rem;

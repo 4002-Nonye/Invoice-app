@@ -7,6 +7,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import ItemCard from '../ItemCard/ItemCard';
 import Address from '../Address/Address';
+import DeleteDialog from '../DeleteDialog/DeleteDialog';
 const invoice = {
   id: 'XM9140',
   senderAddress: `19 Union Terrace`,
@@ -237,6 +238,9 @@ function InvoiceDetail() {
           </div>
         </div>
       </div>
+      <DeleteDialog/>
+
+     
     </div>
   );
 }

@@ -1,0 +1,70 @@
+.deleteBox {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  border-radius: 8px;
+  background: var(--color-white-0);
+  box-shadow: 0 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 48rem;
+  height: 24.9rem;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 4rem;
+  transition: 500ms;
+}
+.deleteBox.dark {
+  background: var(--color-darkblue--1);
+}
+.confirmHead {
+  color: var(--color-dark--1);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  letter-spacing: -0.05rem;
+}
+.confirmHead.dark {
+  color: var(--color-white-0);
+}
+
+.confirmText {
+  color: var(--color-grey--1);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.2rem;
+  letter-spacing: -0.01rem;
+}
+.actionBtns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: 1;
+  width: 100%;
+  /* transform: translateX(200rem); */
+  transition: 1000ms;
+}
+
+@media screen and (max-width: 600px) {
+  .deleteBox {
+    width: 90%;
+    top: 30%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .deleteBox {
+    padding: 4rem 2rem;
+  }
+}

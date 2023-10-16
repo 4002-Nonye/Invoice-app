@@ -45,11 +45,17 @@
 }
 .cancel {
 }
-.discard {
+.discard,
+.cancel {
   color: var(--color-softblue--1);
   width: 9.6rem;
   height: 4.8rem;
   background: var(--color-white-1);
+  border-radius: 2.4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  letter-spacing: -0.025rem;
 }
 .edit,
 .delete,
@@ -68,13 +74,19 @@
   color: var(--color-softblue--1);
   width: 7.3rem;
 }
-.edit.dark {
+.edit.dark,
+.cancel.dark,
+.discard.dark {
   background: var(--color-darkblue--2);
 }
-.edit.dark:hover {
+.edit.dark:hover,
+.cancel.dark:hover,
+.discard.dark:hover {
   background: var(--color-darkblue--4);
 }
-.edit:hover {
+.edit:hover,
+.cancel:hover,
+.discard:hover {
   background: var(--color-softblue--1);
   color: var(--color-white-0);
 }

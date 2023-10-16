@@ -1,5 +1,6 @@
 .invoiceDetail {
   width: 50%;
+  position: relative;
 }
 .btnBack {
   color: var(--color-dark--1);
@@ -16,6 +17,9 @@
 .btnBack.dark {
   color: var(--color-white-0);
 }
+
+
+
 .head {
   display: flex;
   align-items: center;

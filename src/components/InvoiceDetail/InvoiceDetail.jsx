@@ -117,17 +117,13 @@ function InvoiceDetail() {
                 {invoice.description}
               </span>
             </p>
-            <Address invoice={invoice}/>
-            {/* <div
-              className={`${styles.address} ${styles.senderAddress}  ${
-                theme === 'dark' && styles.dark
-              }`}
-            >
-              <span>{invoice.senderAddress}</span>
-              <span>{invoice.senderCity}</span>
-              <span>{invoice.senderPostCode}</span>
-              <span>{invoice.senderCountry}</span>
-            </div> */}
+            <Address
+              className="senderAddress"
+              address={invoice.senderAddress}
+              city={invoice.senderCity}
+              postCode={invoice.senderPostCode}
+              country={invoice.senderCountry}
+            />
           </div>
 
           <div className={styles.midInfo}>
@@ -182,7 +178,13 @@ function InvoiceDetail() {
                 >
                   {invoice.name}
                 </p>
-               <Address invoice={invoice}/>
+                <Address
+                  className="clientAddress"
+                  address={invoice.clientAddress}
+                  city={invoice.clientCity}
+                  postCode={invoice.clientPostCode}
+                  country={invoice.clientCountry}
+                />
               </div>
             </div>
             <div>

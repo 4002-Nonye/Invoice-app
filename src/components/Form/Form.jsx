@@ -273,6 +273,8 @@ function Form({ children }) {
                   }`}
                 >
                   <DatePicker
+                calendarClassName={` wrapper ${theme === 'dark' && 'dark'}`}
+                    className={` ${theme === 'dark' && styles.dark}`}
                     id="invoiceDate"
                     selected={date}
                     onChange={(date) => handleInputChange(date, 'DATE/CHANGED')}
@@ -297,7 +299,7 @@ function Form({ children }) {
                 <p
                   type="text"
                   id="paymentTerms"
-                  className={` ${theme === 'dark' && styles.dark}`}
+                  className={`${theme === 'dark' && styles.dark}`}
                 >
                   {' '}
                   <span>

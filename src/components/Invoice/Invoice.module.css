@@ -72,9 +72,12 @@
 .invoiceWrapper li {
   display: flex;
 }
+.loader{
+  margin-top: 2rem;
+}
 @media screen and (max-width: 1024px) {
   .invoice {
-    margin-top: 10rem;
+    margin-top: 8rem;
     width: 75%;
   }
 }
@@ -87,7 +90,7 @@
 @media screen and (max-width: 500px) {
   .invoice {
     width: 85%;
-    margin-top: 12rem;
+   
   }
   .addInvoice {
     width: 9rem;

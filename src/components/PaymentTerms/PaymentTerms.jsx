@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './PaymentTerms.module.css';
-import { useInvoice } from '../../contexts/InvoiceContext';
+import { useForm } from '../../contexts/FormContext';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const days = ['1', '7', '14', '30'];
 function PaymentTerms() {
-  const { handlePaymentTerms } = useInvoice();
+  const { handlePaymentTerms } = useForm();
   const {theme} = useTheme()
   return (
     <div className={`${styles.terms} ${theme === 'dark' && styles.dark}`}>

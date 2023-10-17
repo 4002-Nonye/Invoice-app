@@ -3,9 +3,13 @@ import React from 'react';
 import styles from './InvoiceCard.module.css';
 import arrowRight from '../../assets/arrow-right.svg';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useForm } from '../../contexts/FormContext';
+import useDateFormatter from '../../hooks/useDateFormatter';
 
 function InvoiceCard({ invoice }) {
   const { theme } = useTheme();
+  const { paymentDay } = useForm();
+
   return (
     <>
       <div
@@ -21,7 +25,7 @@ function InvoiceCard({ invoice }) {
             <span
               className={`${styles.date}  ${theme === 'dark' && styles.dark}`}
             >
-              {invoice.dueDate}
+              {useDateFormatter(invoice.invoiceDate, invoice.paymentDay)}
             </span>
           </p>
           <p

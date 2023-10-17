@@ -10,20 +10,39 @@ import arrowUp from '../../assets/arrow-up.svg';
 import PaymentTerms from '../PaymentTerms/PaymentTerms';
 import { useForm } from '../../contexts/FormContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useInvoice } from '../../contexts/InvoiceContext';
+import  useId  from '../../hooks/useId';
 
 function Form({ children }) {
+ 
   const {
     date,
     handleInputChange,
     paymentDay,
     sender,
     client,
-    description,
-    invoiceFormisOpen,
-  } = useForm();
-  const { theme } = useTheme();
+    description
+  
 
+  } = useForm();
+  const {invoiceFormisOpen} = useInvoice();
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
+  const { handleSubmit } = useInvoice();
+
+  // new invoice to be added to invoices array
+  const newInvoiceObj = {
+    id: useId(),
+    ...client,
+    ...sender,
+    description,
+    paymentDay,
+    invoiceDate: date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    }).replace(',', ''),
+  };
 
   // function to display/hide Payment terms box
   const handleShowPayment = () => {
@@ -273,7 +292,7 @@ function Form({ children }) {
                   }`}
                 >
                   <DatePicker
-                calendarClassName={` wrapper ${theme === 'dark' && 'dark'}`}
+                    calendarClassName={` wrapper ${theme === 'dark' && 'dark'}`}
                     className={` ${theme === 'dark' && styles.dark}`}
                     id="invoiceDate"
                     selected={date}
@@ -344,7 +363,11 @@ function Form({ children }) {
               <Button type="button" variant="draft">
                 Save as Draft
               </Button>
-              <Button type="submit" variant="save">
+              <Button
+                onClick={(e) => handleSubmit(e, newInvoiceObj)}
+                type="submit"
+                variant="save"
+              >
                 Save & Send
               </Button>
             </div>

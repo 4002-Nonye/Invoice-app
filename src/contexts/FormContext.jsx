@@ -23,7 +23,6 @@ const initialState = {
   description: '',
 
   itemList: [{ id: uuidv4(), name: '', qty: '', price: '', total: 0 }],
-  invoiceFormisOpen: false,
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -157,8 +156,6 @@ const reducer = (state, action) => {
         ...state,
         itemList: state.itemList.filter((item) => item.id !== action.payload),
       };
-    case 'NEW_INVOICE/OPEN':
-      return { ...state, invoiceFormisOpen: true };
 
     default:
       throw new Error('Unknown action type');
@@ -167,26 +164,13 @@ const reducer = (state, action) => {
 
 const FormProvider = ({ children }) => {
   const [
-    {
-      sender,
-      client,
-      paymentDay,
-      date,
-      description,
-      invoiceFormisOpen,
-      itemList,
-    },
+    { sender, client, paymentDay, date, description, itemList },
     dispatch,
   ] = useReducer(reducer, initialState);
 
   // function to handle input change
   const handleInputChange = (value, type) => {
     dispatch({ type: type, payload: value });
-  };
-
-  // function to open form to create a new invoice
-  const handleOpenForm = () => {
-    dispatch({ type: 'NEW_INVOICE/OPEN' });
   };
 
   // function to handle payment terms
@@ -214,14 +198,12 @@ const FormProvider = ({ children }) => {
   return (
     <FormContext.Provider
       value={{
-        handleOpenForm,
         handlePaymentTerms,
         handleAddItem,
         handleItemValueChange,
         handleDeleteItem,
         handleInputChange,
         itemList,
-        invoiceFormisOpen,
         sender,
         client,
         paymentDay,

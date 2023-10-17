@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './Invoice.module.css';
 import add from '../../assets/add.svg';
 import NoInvoice from '../NoInvoice/NoInvoice';
@@ -6,12 +6,12 @@ import { useInvoice } from '../../contexts/InvoiceContext';
 import Filter from '../Filter/Filter';
 import InvoiceCard from '../InvoiceCard/InvoiceCard';
 import { Link } from 'react-router-dom';
-import { useForm } from '../../contexts/FormContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import Skeleton from 'react-loading-skeleton';
 
 function Invoice() {
-  const { invoices, status } = useInvoice();
-  const { handleOpenForm } = useForm();
+  const { invoices, status, isLoading } = useInvoice();
+  const { handleOpenForm } = useInvoice();
   const { theme } = useTheme();
 
   // filter invoices according to invoice status
@@ -22,7 +22,11 @@ function Invoice() {
 
   return (
     <div className={styles.invoice}>
-      <div className={`${styles.invoiceHeadWrapper}  ${theme === 'dark' && styles.dark}`}>
+      <div
+        className={`${styles.invoiceHeadWrapper}  ${
+          theme === 'dark' && styles.dark
+        }`}
+      >
         <div
           className={`${styles.invoiceHead}  ${
             theme === 'dark' && styles.dark
@@ -53,15 +57,28 @@ function Invoice() {
         </div>
       </div>
 
-      {!invoices.length && <NoInvoice />}
+      {invoices.length === 0 && !isLoading && <NoInvoice />}
 
       {invoices && (
         <div className={styles.invoiceWrapper}>
-          {FilteredInvoices.map((invoice) => (
-            <Link to={`/invoice/${invoice.id}`} key={invoice.id}>
-              <InvoiceCard invoice={invoice} />
-            </Link>
-          ))}
+          {isLoading ? (
+            <Skeleton
+              className={styles.loader}
+              count={3}
+              height={60}
+              highlightColor="#494e6e"
+            />
+          ) : (
+            FilteredInvoices.map((invoice) => (
+              <div key={invoice.id}>
+                <>
+                  <Link to={`/invoice/${invoice.id}`}>
+                    <InvoiceCard invoice={invoice} />
+                  </Link>
+                </>
+              </div>
+            ))
+          )}
         </div>
       )}
     </div>

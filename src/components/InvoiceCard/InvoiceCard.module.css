@@ -24,7 +24,7 @@
 
 .dueDate {
   color: var(--color-grey--1);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.5rem;
   letter-spacing: -0.01rem;
@@ -39,7 +39,7 @@
 
 .name {
   color: var(--color-softblue--2);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.5rem;
   letter-spacing: -0.01rem;
@@ -50,7 +50,7 @@
 .amount {
   color: var(--color-dark--1);
   text-align: right;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 2.4rem;
   letter-spacing: -0.025rem;

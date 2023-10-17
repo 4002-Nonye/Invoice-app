@@ -11,7 +11,7 @@ const initialState = {
     senderCountry: '',
   },
   client: {
-    clientName: '',
+    name: '',
     clientEmail: '',
     clientAddress: '',
     clientCity: '',
@@ -69,7 +69,7 @@ const reducer = (state, action) => {
         ...state,
         client: {
           ...state.client,
-          clientName: action.payload,
+          name: action.payload,
         },
       };
     case 'CLIENT_EMAIL/CHANGED':

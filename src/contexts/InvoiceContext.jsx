@@ -33,17 +33,24 @@ const reducer = (state, action) => {
   }
 };
 const InvoiceProvider = ({ children }) => {
-  const [{ status, invoices, invoiceDetail, invoiceFormisOpen,isLoading, invoiceID }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    {
+      status,
+      invoices,
+      invoiceDetail,
+      invoiceFormisOpen,
+      isLoading,
+      invoiceID,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
+  // function to open form to create a new invoice
+  const handleOpenForm = () => {
+    dispatch({ type: 'NEW_INVOICE/OPEN' });
+  };
 
-// function to open form to create a new invoice
-const handleOpenForm = () => {
-  dispatch({ type: 'NEW_INVOICE/OPEN' });
-};
-
-/////////////////////////////////////////////////////////////////////////////////////
-
+  /////////////////////////////////////////////////////////////////////////////////////
 
   // get invoices on initial render
   useEffect(() => {
@@ -60,7 +67,6 @@ const handleOpenForm = () => {
     };
     getInvoices();
   }, []);
-
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,24 +90,31 @@ const handleOpenForm = () => {
     getInvoiceByID();
   }, [invoiceID]);
 
-
-////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
 
   // create new invoice
 
   const handleSubmit = async (e, newInvoice) => {
     e.preventDefault();
     if (!newInvoice) {
-      console.log(newInvoice);
       return;
     }
+
+    //add new data
+    const { data, error } = await supabase
+      .from('invoices')
+      .insert([newInvoice])
+      .select();
+
+      if(error)console.log(error)
+      if(data)console.log(data)
 
     console.log(newInvoice);
 
     // const {data,error}
   };
 
-///////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////
 
   // function to handle input change
   const handleInputChange = (value, type) => {
@@ -117,7 +130,9 @@ const handleOpenForm = () => {
         dispatch,
         invoiceDetail,
         isLoading,
-        handleSubmit,handleOpenForm,invoiceFormisOpen
+        handleSubmit,
+        handleOpenForm,
+        invoiceFormisOpen,
       }}
     >
       {children}

@@ -32,10 +32,11 @@ function Form({ children }) {
 
   // new invoice to be added to invoices array
   const newInvoiceObj = {
-    id: useId(),
+ 
     ...client,
     ...sender,
     description,
+    status:'pending',
     paymentDay,
     invoiceDate: date.toLocaleDateString('en-GB', {
       day: '2-digit',
@@ -117,7 +118,7 @@ function Form({ children }) {
                   </label>
                   <input
                     className={` ${theme === 'dark' && styles.dark}`}
-                    type="number"
+                    type="text"
                     id="postCode"
                     value={sender.senderPostCode}
                     onChange={(e) =>
@@ -167,7 +168,7 @@ function Form({ children }) {
                 className={` ${theme === 'dark' && styles.dark}`}
                 type="text"
                 id="clientName"
-                value={client.clientName}
+                value={client.name}
                 onChange={(e) =>
                   handleInputChange(e.target.value, 'CLIENT_NAME/CHANGED')
                 }
@@ -244,7 +245,7 @@ function Form({ children }) {
                   </label>
                   <input
                     className={` ${theme === 'dark' && styles.dark}`}
-                    type="number"
+                    type="text"
                     id="clientPostCode"
                     value={client.clientPostCode}
                     onChange={(e) =>

@@ -9,6 +9,7 @@ const initialState = {
   invoiceID: '',
   isLoading: false,
   invoiceFormisOpen: false,
+  
 };
 
 const reducer = (state, action) => {
@@ -95,29 +96,39 @@ const InvoiceProvider = ({ children }) => {
   // create new invoice
 
   const handleSubmit = async (e, newInvoice) => {
-
     e.preventDefault();
-    // to make sure all fields are filled
-    const isFilled = Object.values(newInvoice).every(value => value !== null && value !== undefined && value !== '');
-    if (!isFilled) {
-      console.log('it is empty')
-      return;
+  
+    const emptyFields = Object.keys(newInvoice).filter(key => newInvoice[key] === null || newInvoice[key] === undefined || newInvoice[key] === '');
+  
+    if (emptyFields.length > 0) {
+      console.log('The object contains empty values.');
+      // console.log('Empty fields:', emptyFields);
+  
+      // You can display error messages for empty fields here
+      emptyFields.forEach(field => {
+        console.log(`Error: ${field} is empty.`);
+        // You can also update your UI to display error messages for these fields.
+      });
+  
+      return; // Don't send the request if there are empty fields.
     }
-
-    //add new data
+  
+    // Add new data
     const { data, error } = await supabase
       .from('invoices')
       .insert([newInvoice])
       .select();
-
-      if(error)console.log(error)
-      if(data)console.log(data)
-
+  
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      console.log(data);
+    }
+  
     console.log(newInvoice);
-
-    // const {data,error}
   };
-
+  
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   // function to handle input change

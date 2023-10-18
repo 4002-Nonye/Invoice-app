@@ -11,38 +11,31 @@ import PaymentTerms from '../PaymentTerms/PaymentTerms';
 import { useForm } from '../../contexts/FormContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useInvoice } from '../../contexts/InvoiceContext';
-import  useId  from '../../hooks/useId';
+import useId from '../../hooks/useId';
 
 function Form({ children }) {
- 
-  const {
-    date,
-    handleInputChange,
-    paymentDay,
-    sender,
-    client,
-    description
-  
-
-  } = useForm();
-  const {invoiceFormisOpen} = useInvoice();
+  const { date, handleInputChange, paymentDay, sender, client, description } =
+    useForm();
+  const { invoiceFormisOpen } = useInvoice();
   const [isOpen, setIsOpen] = useState(false);
   const { theme } = useTheme();
   const { handleSubmit } = useInvoice();
 
   // new invoice to be added to invoices array
   const newInvoiceObj = {
- 
+    userId: useId(),
     ...client,
     ...sender,
     description,
-    status:'pending',
+    status: 'pending',
     paymentDay,
-    invoiceDate: date.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    }).replace(',', ''),
+    invoiceDate: date
+      .toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      })
+      .replace(',', ''),
   };
 
   // function to display/hide Payment terms box

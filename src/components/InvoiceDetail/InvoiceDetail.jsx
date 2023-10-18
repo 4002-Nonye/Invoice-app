@@ -116,7 +116,7 @@ function InvoiceDetail() {
           <div className={styles.topInfo}>
             <p className={`id  ${theme === 'dark' && 'dark'}`}>
               <span className={` hash`}> #</span>
-              {invoiceDetail.id}
+              {invoiceDetail.userId}
               <span
                 className={`${styles.description} ${
                   theme === 'dark' && styles.dark

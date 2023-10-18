@@ -78,7 +78,7 @@ const InvoiceProvider = ({ children }) => {
         const { data, error } = await supabase
           .from('invoices')
           .select()
-          .eq('id', invoiceID)
+          .eq('userId', invoiceID)
           .single();
 
         if (data) dispatch({ type: 'INVOICE_DETAIL/LOADED', payload: data });
@@ -95,8 +95,12 @@ const InvoiceProvider = ({ children }) => {
   // create new invoice
 
   const handleSubmit = async (e, newInvoice) => {
+
     e.preventDefault();
-    if (!newInvoice) {
+    // to make sure all fields are filled
+    const isFilled = Object.values(newInvoice).every(value => value !== null && value !== undefined && value !== '');
+    if (!isFilled) {
+      console.log('it is empty')
       return;
     }
 

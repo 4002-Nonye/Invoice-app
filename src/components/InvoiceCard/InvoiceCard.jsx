@@ -8,7 +8,14 @@ import useDateFormatter from '../../hooks/useDateFormatter';
 
 function InvoiceCard({ invoice }) {
   const { theme } = useTheme();
-  const { paymentDay } = useForm();
+  // function to convert number
+
+  const convertNumber = (num) => {
+    const newNumber = Number(num)
+    return newNumber.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+  };
 
   return (
     <>
@@ -18,7 +25,7 @@ function InvoiceCard({ invoice }) {
         <div className={styles.left}>
           <p className={`id  ${theme === 'dark' && 'dark'}`}>
             <span className={`hash`}> #</span>
-            {invoice.id}
+            {invoice.userId}
           </p>
           <p className={`${styles.dueDate} ${theme === 'dark' && styles.dark}`}>
             Due{' '}
@@ -40,7 +47,7 @@ function InvoiceCard({ invoice }) {
               theme === 'dark' && styles.dark
             }`}
           >
-            £ {invoice.amount}
+            £ {convertNumber(invoice.amount)}
           </p>
         </div>
 
@@ -57,7 +64,7 @@ function InvoiceCard({ invoice }) {
               theme === 'dark' && styles.dark
             }`}
           >
-            £ {invoice.amount}
+            £ {convertNumber(invoice.amount)}
           </p>
           <div className={styles.status}>
             <span

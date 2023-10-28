@@ -9,7 +9,7 @@ const initialState = {
   invoiceID: '',
   isLoading: false,
   invoiceFormisOpen: false,
-  
+  formError: '',
 };
 
 const reducer = (state, action) => {
@@ -29,6 +29,17 @@ const reducer = (state, action) => {
       return { ...state, invoiceID: action.payload };
     case 'INVOICE_DETAIL/LOADED':
       return { ...state, isLoading: false, invoiceDetail: action.payload };
+    case 'SUBMIT/EMPTY_FIELD':
+      return { ...state, formError: action.payload };
+    case 'SUBMIT/SUCCESSFUL':
+      return {
+        ...state,
+        formError: '',
+        invoiceFormisOpen: false,
+        invoices: [...state.invoices, action.payload],
+      };
+    case 'DISCARD_INVOICE':
+      return { ...state, invoiceFormisOpen: false };
     default:
       throw new Error('Unknown action type');
   }
@@ -42,6 +53,7 @@ const InvoiceProvider = ({ children }) => {
       invoiceFormisOpen,
       isLoading,
       invoiceID,
+      formError,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -97,38 +109,51 @@ const InvoiceProvider = ({ children }) => {
 
   const handleSubmit = async (e, newInvoice) => {
     e.preventDefault();
-  
-    const emptyFields = Object.keys(newInvoice).filter(key => newInvoice[key] === null || newInvoice[key] === undefined || newInvoice[key] === '');
-  
+
+    // check if any of the form fields are empty
+    const emptyFields = Object.keys(newInvoice).filter(
+      (key) =>
+        newInvoice[key] === null ||
+        newInvoice[key] === undefined ||
+        newInvoice[key] === ''
+    );
+
+    // display error message if any of the form fields are empty
     if (emptyFields.length > 0) {
-      console.log('The object contains empty values.');
-      // console.log('Empty fields:', emptyFields);
-  
-      // You can display error messages for empty fields here
-      emptyFields.forEach(field => {
-        console.log(`Error: ${field} is empty.`);
-        // You can also update your UI to display error messages for these fields.
+      console.log('hmmm')
+      dispatch({
+        type: 'SUBMIT/EMPTY_FIELD',
+        payload: 'Please fill in all fields correctly',
       });
-  
+
       return; // Don't send the request if there are empty fields.
     }
-  
+
     // Add new data
     const { data, error } = await supabase
       .from('invoices')
       .insert([newInvoice])
       .select();
-  
+
     if (error) {
-      console.log(error);
+      dispatch({
+        type: 'SUBMIT/EMPTY_FIELD',
+        payload: 'Please fill in all fields correctly',
+      });
     }
     if (data) {
-      console.log(data);
+      dispatch({ type: 'SUBMIT/SUCCESSFUL', payload: newInvoice });
     }
-  
-    console.log(newInvoice);
   };
-  
+
+  ///////////////////////////////////////////////////////////////////////////////////////////
+
+  // function to discard invoice
+
+  const handleDiscard = () => {
+    dispatch({ type: 'DISCARD_INVOICE' });
+  };
+
   ///////////////////////////////////////////////////////////////////////////////////////////
 
   // function to handle input change
@@ -148,6 +173,8 @@ const InvoiceProvider = ({ children }) => {
         handleSubmit,
         handleOpenForm,
         invoiceFormisOpen,
+        formError,
+        handleDiscard,
       }}
     >
       {children}

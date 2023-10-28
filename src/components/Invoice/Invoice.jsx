@@ -70,7 +70,7 @@ function Invoice() {
             />
           ) : (
             FilteredInvoices.map((invoice) => (
-              <div key={invoice.id}>
+              <div key={invoice.userId}>
                 <>
                   <Link to={`/invoice/${invoice.userId}`}>
                     <InvoiceCard invoice={invoice} />

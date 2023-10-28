@@ -91,11 +91,11 @@
 .midInfo {
   display: flex;
   margin-top: 3rem;
-  gap: 15rem;
+  gap: 12rem;
 }
 .flex {
   display: flex;
-  gap: 15rem;
+  gap: 12rem;
 }
 .column {
   display: flex;

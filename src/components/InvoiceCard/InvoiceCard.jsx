@@ -3,15 +3,16 @@ import React from 'react';
 import styles from './InvoiceCard.module.css';
 import arrowRight from '../../assets/arrow-right.svg';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useForm } from '../../contexts/FormContext';
 import useDateFormatter from '../../hooks/useDateFormatter';
 
 function InvoiceCard({ invoice }) {
-  const { theme } = useTheme();
-  // function to convert number
 
+  const { theme } = useTheme();
+  
+  // function to convert number
   const convertNumber = (num) => {
     const newNumber = Number(num)
+    if(isNaN(newNumber)) return '00.00'
     return newNumber.toLocaleString(undefined, {
       minimumFractionDigits: 2,
     });

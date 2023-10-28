@@ -18,11 +18,15 @@ function ItemList() {
     price: '',
     total: 0,
   };
-
+ 
   return (
     <>
       <div className={styles.itemList}>
-        <div className={`${styles.fields} ${styles.terms} ${theme === 'dark' && styles.dark}`}>
+        <div
+          className={`${styles.fields} ${styles.terms} ${
+            theme === 'dark' && styles.dark
+          }`}
+        >
           <p className={styles.itemName}>Item Name</p>
           <p className={styles.qty}>Qty.</p>
           <p className={styles.price}>Price</p>
@@ -34,7 +38,12 @@ function ItemList() {
           <div key={item.id} className={styles.data}>
             <div>
               <div className={styles.itemNameWrapper}>
-                <label className={`${styles.mobileLabel} ${styles.terms} ${theme === 'dark' && styles.dark}`} htmlFor="itemName">
+                <label
+                  className={`${styles.mobileLabel} ${styles.terms} ${
+                    theme === 'dark' && styles.dark
+                  }`}
+                  htmlFor="itemName"
+                >
                   Item Name
                 </label>
                 <input

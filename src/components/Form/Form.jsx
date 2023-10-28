@@ -12,14 +12,24 @@ import { useForm } from '../../contexts/FormContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useInvoice } from '../../contexts/InvoiceContext';
 import useId from '../../hooks/useId';
+import Message from '../Message/Message';
+
 
 function Form({ children }) {
-  const { date, handleInputChange, paymentDay, sender, client, description } =
-    useForm();
-  const { invoiceFormisOpen } = useInvoice();
+  const {
+    date,
+    handleInputChange,
+    paymentDay,
+    sender,
+    client,
+    description,
+    handleReset,
+    itemList
+  } = useForm();
+  const { invoiceFormisOpen, formError } = useInvoice();
   const [isOpen, setIsOpen] = useState(false);
   const { theme } = useTheme();
-  const { handleSubmit } = useInvoice();
+  const { handleSubmit, handleDiscard } = useInvoice();
 
   // new invoice to be added to invoices array
   const newInvoiceObj = {
@@ -29,6 +39,7 @@ function Form({ children }) {
     description,
     status: 'pending',
     paymentDay,
+    itemList,
     invoiceDate: date
       .toLocaleDateString('en-GB', {
         day: '2-digit',
@@ -350,7 +361,14 @@ function Form({ children }) {
           </div>
 
           <div className={styles.actionBtns}>
-            <Button type="button" variant="discard">
+            <Button
+              onClick={() => {
+                handleDiscard();
+                handleReset();
+              }}
+              type="button"
+              variant="discard"
+            >
               Discard
             </Button>
             <div className={styles.endBtns}>
@@ -358,7 +376,10 @@ function Form({ children }) {
                 Save as Draft
               </Button>
               <Button
-                onClick={(e) => handleSubmit(e, newInvoiceObj)}
+                onClick={(e) => {
+                  handleSubmit(e, newInvoiceObj);
+                if(invoiceFormisOpen === true) console.log('reset')
+                }}
                 type="submit"
                 variant="save"
               >
@@ -366,6 +387,7 @@ function Form({ children }) {
               </Button>
             </div>
           </div>
+          <Message type="error" msg={formError} />
         </form>
       </div>
       <div

@@ -157,6 +157,9 @@ const reducer = (state, action) => {
         itemList: state.itemList.filter((item) => item.id !== action.payload),
       };
 
+       case 'RESET_FORM':
+      return initialState;
+
     default:
       throw new Error('Unknown action type');
   }
@@ -194,6 +197,7 @@ const FormProvider = ({ children }) => {
   const handleDeleteItem = (id) => {
     dispatch({ type: 'DELETE/ITEM_LIST', payload: id });
   };
+  const handleReset = () => dispatch({ type: 'RESET_FORM' });
 
   return (
     <FormContext.Provider
@@ -209,6 +213,7 @@ const FormProvider = ({ children }) => {
         paymentDay,
         date,
         description,
+        handleReset,
       }}
     >
       {children}

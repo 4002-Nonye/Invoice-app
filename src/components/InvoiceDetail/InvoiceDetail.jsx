@@ -13,8 +13,7 @@ import Skeleton from 'react-loading-skeleton';
 import useDateFormatter from '../../hooks/useDateFormatter';
 import { useForm } from '../../contexts/FormContext';
 
-// const invoiceDetail = {
-//   id: 'XM9140',
+// const invoiceDetail = {/   id: 'XM9140',
 //   senderAddress: `19 Union Terrace`,
 //   senderPostCode: 'E1 3EZ',
 //   senderCity: 'London',
@@ -54,10 +53,23 @@ function InvoiceDetail() {
   const { theme } = useTheme();
   const navigate = useNavigate();
 
+
   // function to handle navigation to home page
   const handleGoHome = () => {
     navigate('/');
   };
+
+  // sum up total of all items 
+  const total = invoiceDetail?.itemList?.reduce((prev, acc) => prev + Number(acc.total),0);
+ 
+    // function to convert number
+
+    const convertNumber = (num) =>
+    Number(num).toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+    });
+
+
 
   return (
     <div className={styles.invoiceDetail}>
@@ -232,16 +244,16 @@ function InvoiceDetail() {
             </thead>
 
             <tbody>
-              {/* {invoiceDetail.itemList.map((item) => (
+              {invoiceDetail?.itemList?.map((item) => (
                 <ItemCard key={item.id} item={item} />
-              ))} */}
+              ))}
             </tbody>
           </table>
           <div
             className={`${styles.amountDue} ${theme === 'dark' && styles.dark}`}
           >
             <p>Amount Due</p>
-            <p>£ 556.00</p>
+            <p>£ {convertNumber(total)}</p>
           </div>
         </div>
       </div>
